@@ -1,5 +1,5 @@
-import { ColorValue, Text } from "react-native";
-import { AlignSelf, FontFamily, FontStyle, FontWeight } from "../values";
+import { ColorValue, Text, ViewStyle } from "react-native";
+import { FontFamily, FontStyle, FontWeight } from "../values";
 
 type CustomTextProps = {
     line: number;
@@ -9,7 +9,8 @@ type CustomTextProps = {
     fontStyle: FontStyle;
     fontSize: number;
     color: ColorValue;
-    alignSelf: AlignSelf;
+    align?: ViewStyle;
+    margin?: ViewStyle;
 }
 
 export default function CustomText(props: CustomTextProps) {
@@ -22,7 +23,8 @@ export default function CustomText(props: CustomTextProps) {
                 fontStyle: props.fontStyle,
                 fontSize: props.fontSize,
                 color: props.color,
-                alignSelf: props.alignSelf
+                ...props.align,
+                ...props.margin
             }}>
             {props.value}
         </Text>

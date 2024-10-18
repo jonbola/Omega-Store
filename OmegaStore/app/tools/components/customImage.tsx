@@ -1,11 +1,11 @@
-import { DimensionValue, Image, ImageSourcePropType } from "react-native";
-import { AlignSelf } from "../values";
+import { DimensionValue, Image, ImageSourcePropType, ImageStyle, ViewStyle } from "react-native";
 
 type CustomImageProps = {
     source: ImageSourcePropType;
     width: DimensionValue;
     height: DimensionValue;
-    alignSelf: AlignSelf;
+    align?: ViewStyle;
+    margin?: ViewStyle;
 }
 
 export default function CustomImage(props: CustomImageProps) {
@@ -15,7 +15,8 @@ export default function CustomImage(props: CustomImageProps) {
             style={{
                 width: props.width,
                 height: props.height,
-                alignSelf: props.alignSelf
+                ...props.align as ImageStyle,
+                ...props.margin as ImageStyle
             }} />
     );
 }

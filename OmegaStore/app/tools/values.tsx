@@ -67,7 +67,7 @@ export enum JustifyContent {
     space_evenly = "space-evenly"
 } //React Native justifyContent values
 
-export enum AlignItem {
+export enum AlignItems {
     baseline = "baseline",
     center = "center",
     flex_start = "flex-start",

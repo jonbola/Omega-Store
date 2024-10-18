@@ -1,26 +1,18 @@
 import { ReactNode } from "react"
-import { ColorValue, DimensionValue, View, ViewStyle } from "react-native";
-import { FlexDirection } from "../values";
+import { ColorValue, DimensionValue, View } from "react-native";
+import { AlignItems, FlexDirection, JustifyContent } from "../values";
 
-type CustomBoxBaseProps = {
+type CustomBoxProps = {
     children: ReactNode;
     width: DimensionValue;
     height: DimensionValue;
     backgroundColor: ColorValue;
-    flexDirection: "row" | "row-reverse" | "column" | "column-reverse";
+    flexDirection: FlexDirection;
+    justifyContent: JustifyContent;
+    alignItems: AlignItems;
 }
 
-type CustomBoxRowProps = CustomBoxBaseProps & {
-    flexDirection: "row" | "row-reverse";
-    alignItems: ViewStyle["alignItems"];
-}
 
-type CustomBoxColumnProps = CustomBoxBaseProps & {
-    flexDirection: "column" | "column-reverse";
-    justifyContent: ViewStyle["justifyContent"];
-}
-
-type CustomBoxProps = CustomBoxRowProps | CustomBoxColumnProps;
 
 export default function CustomBox(props: CustomBoxProps) {
     return (
@@ -30,9 +22,8 @@ export default function CustomBox(props: CustomBoxProps) {
                 height: props.height,
                 backgroundColor: props.backgroundColor,
                 flexDirection: props.flexDirection,
-                ...("alignItems" in props
-                    ? { alignItems: props.alignItems }
-                    : { justifyContent: props.justifyContent })
+                justifyContent: props.justifyContent,
+                alignItems: props.alignItems
             }}>
             {props.children}
         </View>
