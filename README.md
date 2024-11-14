@@ -1,14 +1,14 @@
-#REASON FOR THIS PROJECT TO EXIST
-    I want to learn React Native framework and TypeScript by myself with some helps from Internet and AI. I also want to be a fullstack developer and this project will be my first project which i work alone as a fullstack developer.
+# REASON FOR THIS PROJECT TO EXIST
+I want to learn React Native framework and TypeScript by myself with some helps from Internet and AI. I also want to be a fullstack developer and this project will be my first project which i work alone as a fullstack developer.
 
-#GOAL
+# GOAL
     - Knowledge of React Native framework and TypeScript
     - A fully functional mobile app
     - Strong improvement in developer skills
     - Strong improvement in English skills
 
-#TARGET
-    ##Front-end
+# TARGET
+## Front-end
         - Main page to advertise new products, sale deals
         - Search page to search products
         - Favourite product page to track customer's favourite products
@@ -20,7 +20,7 @@
         - Change password page to change customer's account old password
         - Admin pages to manage products, product categories, orders and accounts
 
-    ##Back-end
+## Back-end
         - Show products details function
         - Search products function
         - Bookmark and see favourite products function
@@ -31,7 +31,7 @@
         - Manage products, product categories, orders and accounts function
         - Work with database (SQLite, Firebase, API)
 
-    ##Other Functions
+## Other Functions
         - Support dark/light mode
         - Support many languages
         - Support personal setting
