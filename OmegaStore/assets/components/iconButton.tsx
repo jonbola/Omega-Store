@@ -1,13 +1,23 @@
 import { ColorValue, DimensionValue, FlexAlignType, Image, ImageSourcePropType, TouchableOpacity } from "react-native";
+import { MarginType } from "../values/marginType";
 
 type IconButtonProps = {
     iconSource: ImageSourcePropType;
-    boxStyle?: {
+    iconStyle?: {
+        width?: DimensionValue;
+        height?: DimensionValue;
+    }
+    containerStyle?: {
+        flex?: number;
+        flexGrow?: number;
+        flexShrink?: number;
         width?: DimensionValue;
         height?: DimensionValue;
         borderWidth?: number;
         borderColor?: ColorValue;
         borderRadius?: number;
+        alignSelf?: "auto" | FlexAlignType;
+        margin?: MarginType;
     }
     function?: {
         onPress?: () => void;
@@ -15,33 +25,22 @@ type IconButtonProps = {
         delayLongPress?: number;
         disabled?: boolean;
     }
-    align?: {
-        alignSelf?: "auto" | FlexAlignType;
-        margin?: MarginType;
-    }
-}
-
-type MarginType = {
-    margin?: number;
-    marginTop?: number;
-    marginBottom?: number;
-    marginStart?: number;
-    marginEnd?: number;
-    marginLeft?: number;
-    marginRight?: number;
-    marginVertical?: number;
-    marginHorizontal?: number;
 }
 
 export function IconButton(props: IconButtonProps) {
     return (
         <TouchableOpacity
             style={{
-                borderWidth: props.boxStyle?.borderWidth,
-                borderColor: props.boxStyle?.borderColor,
-                borderRadius: props.boxStyle?.borderRadius,
-                alignSelf: props.align?.alignSelf,
-                ...props.align?.margin
+                flex: props.containerStyle?.flex,
+                flexGrow: props.containerStyle?.flexGrow,
+                flexShrink: props.containerStyle?.flexShrink,
+                width: props.containerStyle?.width,
+                height: props.containerStyle?.height,
+                borderWidth: props.containerStyle?.borderWidth,
+                borderColor: props.containerStyle?.borderColor,
+                borderRadius: props.containerStyle?.borderRadius,
+                alignSelf: props.containerStyle?.alignSelf,
+                ...props.containerStyle?.margin
             }}
             onPress={props.function?.onPress}
             onLongPress={props.function?.onLongPress}
@@ -50,8 +49,8 @@ export function IconButton(props: IconButtonProps) {
             <Image
                 source={props.iconSource}
                 style={{
-                    width: props.boxStyle?.width,
-                    height: props.boxStyle?.height
+                    width: props.iconStyle?.width,
+                    height: props.iconStyle?.height
                 }} />
         </TouchableOpacity>
     );

@@ -1,4 +1,4 @@
-export enum FontFamily {
+export enum AndroidFontFamily {
     roboto = "Roboto",
     noto_sans = "Noto Sans",
     droid_sans = "Droid Sans",

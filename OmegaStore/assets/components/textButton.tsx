@@ -1,25 +1,31 @@
-import { BasicColors } from "@/assets/colors/basic_colors";
-import { FontFamily } from "@/assets/fonts/android_fonts";
-import { Button, ColorValue, DimensionValue, FlexAlignType, Text, TouchableOpacity, View } from "react-native";
+import { ColorValue, DimensionValue, FlexAlignType, Text, TouchableOpacity } from "react-native";
+import { MarginType } from "../values/marginType";
+import { PaddingType } from "../values/paddingType";
+import { AndroidFontFamily } from "../fonts/androidFontFamily";
 
 type TextButtonProps = {
     text: string;
     textStyle?: {
-        fontFamily?: FontFamily;
+        fontFamily?: AndroidFontFamily;
         fontWeight?: "normal" | "bold" | "medium" | "thin" | "light" | "ultralight" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
         fontStyle?: "normal" | "italic";
         fontSize?: number;
-        decorationLine?: "none" | "underline" | "line-through" | "underline line-through" | undefined;
-        textColor?: ColorValue;
-        padding?: PaddingType;
+        textDecorationLine?: "none" | "underline" | "line-through" | "underline line-through" | undefined;
+        color?: ColorValue;
     }
-    boxStyle?: {
+    containerStyle?: {
+        flex?: number;
+        flexGrow?: number;
+        flexShrink?: number;
         width?: DimensionValue;
         height?: DimensionValue;
         backgroundColor?: ColorValue;
         borderWidth?: number;
         borderColor?: ColorValue;
         borderRadius?: number;
+        alignSelf?: "auto" | FlexAlignType;
+        margin?: MarginType;
+        padding?: PaddingType;
     }
     function?: {
         onPress?: () => void;
@@ -27,51 +33,26 @@ type TextButtonProps = {
         delayLongPress?: number;
         disabled?: boolean;
     }
-    align?: {
-        alignSelf?: "auto" | FlexAlignType;
-        margin?: MarginType;
-    }
-}
-
-type MarginType = {
-    margin?: number;
-    marginTop?: number;
-    marginBottom?: number;
-    marginStart?: number;
-    marginEnd?: number;
-    marginLeft?: number;
-    marginRight?: number;
-    marginVertical?: number;
-    marginHorizontal?: number;
-}
-
-type PaddingType = {
-    padding?: number;
-    paddingTop?: number;
-    paddingBottom?: number;
-    paddingStart?: number;
-    paddingEnd?: number;
-    paddingLeft?: number;
-    paddingRight?: number;
-    paddingVertical?: number;
-    paddingHorizontal?: number;
 }
 
 export function TextButton(props: TextButtonProps) {
     return (
         <TouchableOpacity
             style={{
+                flex: props.containerStyle?.flex,
+                flexGrow: props.containerStyle?.flexGrow,
+                flexShrink: props.containerStyle?.flexShrink,
                 justifyContent: "center",
                 alignItems: "center",
-                width: props.boxStyle?.width,
-                height: props.boxStyle?.height,
-                backgroundColor: props.boxStyle?.backgroundColor,
-                borderWidth: props.boxStyle?.borderWidth,
-                borderColor: props.boxStyle?.borderColor,
-                borderRadius: props.boxStyle?.borderRadius,
-                alignSelf: props.align?.alignSelf,
-                ...props.textStyle?.padding,
-                ...props.align?.margin
+                width: props.containerStyle?.width,
+                height: props.containerStyle?.height,
+                backgroundColor: props.containerStyle?.backgroundColor,
+                borderWidth: props.containerStyle?.borderWidth,
+                borderColor: props.containerStyle?.borderColor,
+                borderRadius: props.containerStyle?.borderRadius,
+                alignSelf: props.containerStyle?.alignSelf,
+                ...props.containerStyle?.padding,
+                ...props.containerStyle?.margin,
             }}
             onPress={props.function?.onPress}
             onLongPress={props.function?.onLongPress}
@@ -79,12 +60,12 @@ export function TextButton(props: TextButtonProps) {
             disabled={props.function?.disabled}>
             <Text
                 style={{
-                    color: props.textStyle?.textColor,
+                    color: props.textStyle?.color,
                     fontFamily: props.textStyle?.fontFamily,
                     fontWeight: props.textStyle?.fontWeight,
                     fontStyle: props.textStyle?.fontStyle,
                     fontSize: props.textStyle?.fontSize,
-                    textDecorationLine: props.textStyle?.decorationLine
+                    textDecorationLine: props.textStyle?.textDecorationLine
                 }}>
                 {props.text}
             </Text>

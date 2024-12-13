@@ -1,19 +1,12 @@
-import { ColorValue, DimensionValue, FlexAlignType, Text } from "react-native";
+import { ColorValue, DimensionValue, FlexAlignType, Image, ImageSourcePropType, View } from "react-native";
 import { MarginType } from "../values/marginType";
 import { PaddingType } from "../values/paddingType";
-import { AndroidFontFamily } from "../fonts/androidFontFamily";
 
-type TextBoxProps = {
-    text: string;
-    textStyle?: {
-        fontFamily?: AndroidFontFamily;
-        fontWeight?:
-        "normal" | "bold" | "medium" | "thin" | "light" | "ultralight" |
-        "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
-        fontStyle?: "normal" | "italic";
-        fontSize?: number;
-        textDecorationLine?: "none" | "underline" | "line-through" | "underline line-through" | undefined;
-        color?: ColorValue;
+type ImageBoxProps = {
+    imageSource: ImageSourcePropType;
+    imageStyle?: {
+        width?: DimensionValue;
+        height?: DimensionValue;
     }
     containerStyle?: {
         flex?: number;
@@ -30,20 +23,14 @@ type TextBoxProps = {
     }
 }
 
-export function TextBox(props: TextBoxProps) {
+export function ImageBox(props: ImageBoxProps) {
     return (
-        <Text style={{
+        <View style={{
             flex: props.containerStyle?.flex,
             flexGrow: props.containerStyle?.flexGrow,
             flexShrink: props.containerStyle?.flexShrink,
             width: props.containerStyle?.width,
             height: props.containerStyle?.height,
-            fontFamily: props.textStyle?.fontFamily,
-            fontWeight: props.textStyle?.fontWeight,
-            fontStyle: props.textStyle?.fontStyle,
-            fontSize: props.textStyle?.fontSize,
-            textDecorationLine: props.textStyle?.textDecorationLine,
-            color: props.textStyle?.color,
             borderWidth: props.containerStyle?.borderWidth,
             borderColor: props.containerStyle?.borderColor,
             borderRadius: props.containerStyle?.borderRadius,
@@ -51,7 +38,12 @@ export function TextBox(props: TextBoxProps) {
             ...props.containerStyle?.margin,
             ...props.containerStyle?.padding
         }}>
-            {props.text}
-        </Text>
+            <Image
+                source={props.imageSource}
+                style={{
+                    width: props.imageStyle?.width,
+                    height: props.imageStyle?.height
+                }} />
+        </View>
     );
 }
