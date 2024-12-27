@@ -1,7 +1,7 @@
-import { ColorValue, DimensionValue, FlexAlignType, Text, TouchableOpacity } from "react-native";
+import { ColorValue, DimensionValue, FlexAlignType, Text, TouchableOpacity, View } from "react-native";
 import { MarginType } from "../values/marginType";
-import { PaddingType } from "../values/paddingType";
 import { AndroidFontFamily } from "../fonts/androidFontFamily";
+import { PaddingType } from "../values/paddingType";
 
 type TextButtonProps = {
     text: string;
@@ -37,38 +37,39 @@ type TextButtonProps = {
 
 export function TextButton(props: TextButtonProps) {
     return (
-        <TouchableOpacity
-            style={{
-                flex: props.containerStyle?.flex,
-                flexGrow: props.containerStyle?.flexGrow,
-                flexShrink: props.containerStyle?.flexShrink,
-                justifyContent: "center",
-                alignItems: "center",
-                width: props.containerStyle?.width,
-                height: props.containerStyle?.height,
-                backgroundColor: props.containerStyle?.backgroundColor,
-                borderWidth: props.containerStyle?.borderWidth,
-                borderColor: props.containerStyle?.borderColor,
-                borderRadius: props.containerStyle?.borderRadius,
-                alignSelf: props.containerStyle?.alignSelf,
-                ...props.containerStyle?.padding,
-                ...props.containerStyle?.margin,
-            }}
-            onPress={props.function?.onPress}
-            onLongPress={props.function?.onLongPress}
-            delayLongPress={props.function?.delayLongPress}
-            disabled={props.function?.disabled}>
-            <Text
-                style={{
-                    color: props.textStyle?.color,
-                    fontFamily: props.textStyle?.fontFamily,
-                    fontWeight: props.textStyle?.fontWeight,
-                    fontStyle: props.textStyle?.fontStyle,
-                    fontSize: props.textStyle?.fontSize,
-                    textDecorationLine: props.textStyle?.textDecorationLine
-                }}>
-                {props.text}
-            </Text>
-        </TouchableOpacity>
+        <View style={{
+            flex: props.containerStyle?.flex,
+            flexGrow: props.containerStyle?.flexGrow,
+            flexShrink: props.containerStyle?.flexShrink,
+            width: props.containerStyle?.width,
+            height: props.containerStyle?.height,
+            backgroundColor: props.containerStyle?.backgroundColor,
+            borderWidth: props.containerStyle?.borderWidth,
+            borderColor: props.containerStyle?.borderColor,
+            borderRadius: props.containerStyle?.borderRadius,
+            justifyContent: "center",
+            alignItems: "center",
+            alignSelf: props.containerStyle?.alignSelf,
+            ...props.containerStyle?.margin,
+            ...props.containerStyle?.padding
+        }}>
+            <TouchableOpacity
+                onPress={props.function?.onPress}
+                onLongPress={props.function?.onLongPress}
+                delayLongPress={props.function?.delayLongPress}
+                disabled={props.function?.disabled}>
+                <Text
+                    style={{
+                        color: props.textStyle?.color,
+                        fontFamily: props.textStyle?.fontFamily,
+                        fontWeight: props.textStyle?.fontWeight,
+                        fontStyle: props.textStyle?.fontStyle,
+                        fontSize: props.textStyle?.fontSize,
+                        textDecorationLine: props.textStyle?.textDecorationLine
+                    }}>
+                    {props.text}
+                </Text>
+            </TouchableOpacity>
+        </View>
     );
 }

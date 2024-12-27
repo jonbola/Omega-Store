@@ -1,310 +1,192 @@
-import { IconButton } from "@/assets/components/iconButton";
-import { TextBox } from "@/assets/components/textBox";
-import { TextButton } from "@/assets/components/textButton";
-import { TextField } from "@/assets/components/textField";
 import React, { useState } from "react";
-import { Image, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
+import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { BasicColors } from "@/assets/colors/basic_colors";
 import { IconSources, ImageSources } from "@/assets/resources/resource_directories";
-import { AndroidFontFamily } from "@/assets/fonts/androidFontFamily";
-import { blurFieldColor, buttonBackgroundColor, buttonBorderColor, buttonTextColor, focusedFieldColor, linkTextColor, normalTextColor } from "@/assets/values/componentColor";
-import Container from "@/assets/components/container";
+import { blurColor, focusedColor } from "@/assets/values/componentColor";
+import { RootParamsList } from "@/app/_layout";
+import { iconButtonStyle, textButtonStyle, textInputStyle, textStyle } from "@/assets/values/styleSheet";
 
-type SignupPageProps = {
-}
+type NavigationProps = NativeStackNavigationProp<RootParamsList, "SignupPage">;
+type RouteProps = RouteProp<RootParamsList, "SignupPage">;
 
-export default function SignupPage(props: SignupPageProps) {
+export default function SignupPage() {
+    const navigation = useNavigation<NavigationProps>();
+    const route = useRoute<RouteProps>();
+
     return (
-        <Container
-            containerStyle={{
-                height: "100%",
-                backgroundColor: BasicColors.white,
-            }}>
+        <View style={{
+            flex: 1,
+            backgroundColor: BasicColors.white, padding: 10
+        }}>
             <KeyboardAvoidingView
+                style={{ flexGrow: 1 }}
                 behavior={Platform.OS == "ios" ? "padding" : "height"}>
-                <ScrollView>
+                <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <HeadSection />
                     <BodySection />
                     <BottomSection />
                 </ScrollView>
             </KeyboardAvoidingView>
-        </Container>
+        </View>
     );
-}
-
-function HeadSection() {
-    return (
-        <Container //Logo section
-            containerStyle={{ margin: { marginVertical: 30 } }}>
-            <Image
-                source={ImageSources.img_store_logo}
-                style={{
-                    width: 100,
-                    height: 100,
-                    alignSelf: "center"
-                }} />
-        </Container>
-    );
-}
-
-function BodySection() {
-    const blurColor = blurFieldColor, focusedColor = focusedFieldColor;
-    const [usernameFieldColor, setUsernameFieldColor] = useState(blurColor);
-    const [emailFieldColor, setEmailFieldColor] = useState(blurColor);
-    const [passwordFieldColor, setPasswordFieldColor] = useState(blurColor);
-    const [rePasswordFieldColor, setRePasswordFieldColor] = useState(blurColor);
-
-    const hiddenEye = IconSources.ic_hidden_eye, unhiddenEye = IconSources.ic_unhidden_eye;
-    const [passwordTextHidden, setPasswordTextVision] = useState(true);
-    const [rePasswordTextHidden, setRePasswordTextVision] = useState(true);
-    const [passwordEye, setPasswordEye] = useState(hiddenEye);
-    const [rePasswordEye, setRePasswordEye] = useState(hiddenEye);
-    function changeTextVision(eyeName: string) {
-        switch (eyeName) {
-            case "passwordEye": {
-                {
-                    if (passwordTextHidden) {
-                        setPasswordTextVision(false);
-                        setPasswordEye(unhiddenEye);
-                    }
-                    else {
-                        setPasswordTextVision(true);
-                        setPasswordEye(hiddenEye);
-                    }
-                }
-                break;
-            }
-            case "rePasswordEye": {
-                if (rePasswordTextHidden) {
-                    setRePasswordTextVision(false);
-                    setRePasswordEye(unhiddenEye);
-                }
-                else {
-                    setRePasswordTextVision(true);
-                    setRePasswordEye(hiddenEye);
-                }
-                break;
-            }
-            default:
-                return;
-        }
+    function HeadSection() {
+        return (
+            <View style={{
+                flex: 1,
+                justifyContent: "center", alignItems: "center"
+            }}>
+                <Image
+                    source={ImageSources.img_store_logo}
+                    style={{
+                        width: 100, height: 100
+                    }} />
+            </View>
+        );
     }
 
-    return (
-        <Container //Input section
-            containerStyle={{ margin: { marginHorizontal: 10 } }}
-            childrenStyle={{
-                flexDirection: "column",
-                justifyContent: "flex-start"
+    function BodySection() {
+        const [usernameFieldColor, setUsernameFieldColor] = useState(blurColor);
+        const [emailFieldColor, setEmailFieldColor] = useState(blurColor);
+        const [passwordFieldColor, setPasswordFieldColor] = useState(blurColor);
+        const [rePasswordFieldColor, setRePasswordFieldColor] = useState(blurColor);
+
+        const hiddenEye = IconSources.ic_hidden_eye, unhiddenEye = IconSources.ic_unhidden_eye;
+        const [passwordTextHidden, setPasswordTextVision] = useState(true);
+        const [rePasswordTextHidden, setRePasswordTextVision] = useState(true);
+        const [passwordEye, setPasswordEye] = useState(hiddenEye);
+        const [rePasswordEye, setRePasswordEye] = useState(hiddenEye);
+        function changeTextVision(eyeName: string) {
+            switch (eyeName) {
+                case "passwordEye": {
+                    {
+                        if (passwordTextHidden) {
+                            setPasswordTextVision(false);
+                            setPasswordEye(unhiddenEye);
+                        }
+                        else {
+                            setPasswordTextVision(true);
+                            setPasswordEye(hiddenEye);
+                        }
+                    }
+                    break;
+                }
+                case "rePasswordEye": {
+                    if (rePasswordTextHidden) {
+                        setRePasswordTextVision(false);
+                        setRePasswordEye(unhiddenEye);
+                    }
+                    else {
+                        setRePasswordTextVision(true);
+                        setRePasswordEye(hiddenEye);
+                    }
+                    break;
+                }
+                default:
+                    return;
+            }
+        }
+
+        return (
+            <View style={{
+                flex: 1,
+                flexDirection: "column", justifyContent: "flex-start"
             }}>
-            <TextBox
-                text="Username"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 20,
-                    color: normalTextColor,
-                }} />
-            <TextField
-                placeHolderText="Input username here"
-                placeHolderStyle={{ color: BasicColors.gray }}
-                containerStyle={{
-                    width: 250,
-                    height: 40,
-                    backgroundColor: BasicColors.white,
-                    borderWidth: 1.5,
-                    borderColor: usernameFieldColor,
-                    borderRadius: 10,
-                    padding: { paddingLeft: 10 }
-                }}
-                function={{
-                    inputMode: "text",
-                    onFocus: () => setUsernameFieldColor(focusedColor),
-                    onBlur: () => setUsernameFieldColor(blurColor),
-                    autoCapitalize: "none",
-                }} />
-            <TextBox
-                text="Email"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 20,
-                    color: normalTextColor,
-                }}
-                containerStyle={{ margin: { marginTop: 10 } }} />
-            <TextField
-                placeHolderText="Input email here"
-                placeHolderStyle={{ color: BasicColors.gray }}
-                containerStyle={{
-                    width: 250,
-                    height: 40,
-                    backgroundColor: BasicColors.white,
-                    borderWidth: 1.5,
-                    borderColor: emailFieldColor,
-                    borderRadius: 10,
-                    padding: { paddingLeft: 10 }
-                }}
-                function={{
-                    inputMode: "email",
-                    onFocus: () => setEmailFieldColor(focusedColor),
-                    onBlur: () => setEmailFieldColor(blurColor),
-                    autoCapitalize: "none",
-                }} />
-            <TextBox
-                text="Password"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 20,
-                    color: normalTextColor,
-                }}
-                containerStyle={{ margin: { marginTop: 10 } }} />
-            <Container
-                childrenStyle={{
-                    flexDirection: "row",
-                    justifyContent: "flex-start"
-                }}>
-                <TextField
-                    placeHolderText="Input password here"
-                    placeHolderStyle={{ color: BasicColors.gray }}
-                    containerStyle={{
-                        width: 250,
-                        height: 40,
-                        backgroundColor: BasicColors.white,
-                        borderWidth: 1.5,
-                        borderColor: passwordFieldColor,
-                        borderRadius: 10,
-                        padding: { paddingLeft: 10 }
-                    }}
-                    function={{
-                        inputMode: "text",
-                        onFocus: () => setPasswordFieldColor(focusedColor),
-                        onBlur: () => setPasswordFieldColor(blurColor),
-                        autoCapitalize: "none",
-                        hideText: passwordTextHidden
-                    }} />
-                <IconButton
-                    iconSource={passwordEye}
-                    iconStyle={{
-                        width: 30,
-                        height: 30
-                    }}
-                    containerStyle={{
-                        width: 32,
-                        height: 32,
-                        borderWidth: 1,
-                        borderRadius: 10,
-                        margin: {
-                            marginStart: 10,
-                            marginTop: 4
+                <Text
+                    style={textStyle.title}
+                    children="Username" />
+                <TextInput
+                    placeholder="Input username here"
+                    placeholderTextColor={BasicColors.gray}
+                    style={[textInputStyle.w250, { borderColor: usernameFieldColor }]}
+                    inputMode="text"
+                    autoCapitalize="none"
+                    onBlur={() => setUsernameFieldColor(blurColor)}
+                    onFocus={() => setUsernameFieldColor(focusedColor)} />
+                <Text
+                    style={[textStyle.title, { marginTop: 10 }]}
+                    children="Email" />
+                <TextInput
+                    placeholder="Input email here"
+                    placeholderTextColor={BasicColors.gray}
+                    style={[textInputStyle.w250, { borderColor: emailFieldColor }]}
+                    inputMode="email"
+                    autoCapitalize="none"
+                    onBlur={() => setEmailFieldColor(blurColor)}
+                    onFocus={() => setEmailFieldColor(focusedColor)} />
+                <Text
+                    style={[textStyle.title, { marginTop: 10 }]}
+                    children="Password" />
+                <View style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
+                    <TextInput
+                        placeholder="Input password here"
+                        placeholderTextColor={BasicColors.gray}
+                        style={[textInputStyle.w250, { borderColor: passwordFieldColor }]}
+                        inputMode="text"
+                        autoCapitalize="none"
+                        secureTextEntry={passwordTextHidden}
+                        onBlur={() => setPasswordFieldColor(blurColor)}
+                        onFocus={() => setPasswordFieldColor(focusedColor)} />
+                    <TouchableOpacity
+                        style={[iconButtonStyle.container, { marginStart: 10 }]}
+                        children={
+                            <Image
+                                style={iconButtonStyle.icon}
+                                source={passwordEye} />
                         }
-                    }}
-                    function={{ onPress: () => changeTextVision("passwordEye") }} />
-            </Container>
-            <TextBox
-                text="Repeat Password"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 20,
-                    color: normalTextColor,
-                }}
-                containerStyle={{ margin: { marginTop: 10 } }} />
-            <Container
-                childrenStyle={{
-                    flexDirection: "row",
-                    justifyContent: "flex-start"
-                }}>
-                <TextField
-                    placeHolderText="Repeat the password here"
-                    placeHolderStyle={{ color: BasicColors.gray }}
-                    containerStyle={{
-                        width: 250,
-                        height: 40,
-                        backgroundColor: BasicColors.white,
-                        borderWidth: 1.5,
-                        borderColor: rePasswordFieldColor,
-                        borderRadius: 10,
-                        padding: { paddingLeft: 10 }
-                    }}
-                    function={{
-                        inputMode: "text",
-                        onFocus: () => setRePasswordFieldColor(focusedColor),
-                        onBlur: () => setRePasswordFieldColor(blurColor),
-                        autoCapitalize: "none",
-                        hideText: rePasswordTextHidden
-                    }} />
-                <IconButton
-                    iconSource={rePasswordEye}
-                    iconStyle={{
-                        width: 30,
-                        height: 30
-                    }}
-                    containerStyle={{
-                        width: 32,
-                        height: 32,
-                        borderWidth: 1,
-                        borderRadius: 10,
-                        margin: {
-                            marginStart: 10,
-                            marginTop: 4
+                        onPress={() => changeTextVision("passwordEye")} />
+                </View>
+                <Text
+                    style={[textStyle.title, { marginTop: 10 }]}
+                    children="Repeat Password" />
+                <View style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
+                    <TextInput
+                        placeholder="Repeat there password here"
+                        placeholderTextColor={BasicColors.gray}
+                        style={[textInputStyle.w250, { borderColor: rePasswordFieldColor }]}
+                        inputMode="text"
+                        autoCapitalize="none"
+                        secureTextEntry={rePasswordTextHidden}
+                        onBlur={() => setRePasswordFieldColor(blurColor)}
+                        onFocus={() => setRePasswordFieldColor(focusedColor)} />
+                    <TouchableOpacity
+                        style={[iconButtonStyle.container, { marginStart: 10 }]}
+                        children={
+                            <Image
+                                style={iconButtonStyle.icon}
+                                source={rePasswordEye} />
                         }
-                    }}
-                    function={{ onPress: () => changeTextVision("rePasswordEye") }} />
-            </Container>
-        </Container>
-    );
-}
+                        onPress={() => changeTextVision("rePasswordEye")} />
+                </View>
+            </View>
+        );
+    }
 
-function BottomSection() {
-    const navigation = useNavigation<NativeStackNavigationProp<any>>();
-
-    return (
-        <Container //Function section
-            containerStyle={{ margin: { marginVertical: 30 } }}
-            childrenStyle={{
-                flexDirection: "column",
-                justifyContent: "center",
+    function BottomSection() {
+        return (
+            <View style={{
+                flex: 3,
+                flexDirection: "column", justifyContent: "flex-start",
                 alignItems: "center"
             }}>
-            <TextButton
-                text="SIGN UP"
-                textStyle={{
-                    color: buttonTextColor,
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 15
-                }}
-                containerStyle={{
-                    width: 80,
-                    height: 40,
-                    backgroundColor: buttonBackgroundColor,
-                    borderWidth: 1.5,
-                    borderColor: buttonBorderColor,
-                    borderRadius: 10
-                }}
-                function={{
-                    onPress: () => navigation.navigate("login")
-                }} />
-            <TextButton
-                text="Have an account?"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "normal",
-                    fontStyle: "italic",
-                    fontSize: 15,
-                    textDecorationLine: "underline",
-                    color: linkTextColor
-                }}
-                containerStyle={{ margin: { marginVertical: 5 } }}
-                function={{ onPress: () => navigation.goBack() }} />
-        </Container>
-    );
+                <TouchableOpacity
+                    style={textButtonStyle.container}
+                    children={
+                        <Text
+                            style={textButtonStyle.text}
+                            children="SIGN UP" />
+                    }
+                    onPress={() => navigation.navigate("LoginPage")} />
+                <TouchableOpacity
+                    style={{ marginTop: 10 }}
+                    children={
+                        <Text
+                            style={textStyle.link}
+                            children="Have an account?" />
+                    }
+                    onPress={() => navigation.goBack()} />
+            </View>
+        );
+    }
 }

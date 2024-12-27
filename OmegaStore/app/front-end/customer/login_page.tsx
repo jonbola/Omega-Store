@@ -1,220 +1,165 @@
-import { IconButton } from "@/assets/components/iconButton";
-import { TextBox } from "@/assets/components/textBox";
-import { TextButton } from "@/assets/components/textButton";
-import { TextField } from "@/assets/components/textField";
 import { useState } from "react";
-import { Image, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
+import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { BasicColors } from "@/assets/colors/basic_colors";
 import { IconSources, ImageSources } from "@/assets/resources/resource_directories";
-import { AndroidFontFamily } from "@/assets/fonts/androidFontFamily";
-import { blurFieldColor, buttonBackgroundColor, buttonBorderColor, buttonTextColor, focusedFieldColor, linkTextColor, normalTextColor } from "@/assets/values/componentColor";
-import Container from "@/assets/components/container";
+import { blurColor, focusedColor } from "@/assets/values/componentColor";
+import { RootParamsList } from "@/app/_layout";
+import React from "react";
+import { textButtonStyle, textInputStyle, textStyle } from "@/assets/values/styleSheet";
 
-type LoginPageProps = {
-}
+type NavigationProps = NativeStackNavigationProp<RootParamsList, "LoginPage">;
+type RouteProps = RouteProp<RootParamsList, "LoginPage">;
 
-export default function LoginPage(props: LoginPageProps) {
+export default function LoginPage() {
+    const navigation = useNavigation<NavigationProps>();
+    const route = useRoute<RouteProps>();
+
     return (
-        <Container
-            containerStyle={{
-                flex: 1,
-                backgroundColor: BasicColors.white
-            }}>
+        <View style={{ flex: 1, backgroundColor: BasicColors.white }}>
             <KeyboardAvoidingView
-                style={{ flex: 1 }}
+                style={{ flexGrow: 1 }}
                 behavior={Platform.OS == "ios" ? "padding" : "height"}>
                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <HeadSection />
                     <BodySection />
-                    <BottomSection />
                 </ScrollView>
             </KeyboardAvoidingView>
-        </Container>
+        </View>
     );
-}
 
-function HeadSection() {
-    return (
-        <Container //Logo section
-            containerStyle={{ margin: { marginVertical: 30 } }}>
-            <Image
-                source={ImageSources.img_store_logo}
-                style={{
-                    width: 100,
-                    height: 100,
-                    alignSelf: "center"
-                }} />
-        </Container>
-    );
-}
-
-function BodySection() {
-    const blurColor = blurFieldColor, focusedColor = focusedFieldColor;
-    const [usernameFieldColor, setUsernameFieldColor] = useState(blurColor);
-    const [passwordFieldColor, setPasswordFieldColor] = useState(blurColor);
-
-    const hiddenEye = IconSources.ic_hidden_eye, unhiddenEye = IconSources.ic_unhidden_eye;
-    const [hidden, setTextVision] = useState(true);
-    const [eye, setEye] = useState(hiddenEye);
-    function changeTextVision() {
-        if (hidden) {
-            setTextVision(false);
-            setEye(unhiddenEye);
-        }
-        else {
-            setTextVision(true);
-            setEye(hiddenEye);
-        }
+    function HeadSection() {
+        return (
+            <View style={{
+                flex: 2,
+                justifyContent: "center", alignItems: "center"
+            }}>
+                <Image
+                    source={ImageSources.img_store_logo}
+                    style={{ width: 100, height: 100 }} />
+            </View>
+        );
     }
 
-    return (
-        <Container //Input section
-            containerStyle={{ margin: { marginHorizontal: 10 } }}
-            childrenStyle={{
-                flexDirection: "column",
-                justifyContent: "flex-start",
+    function BodySection() {
+        const [usernameValue, setUsernameValue] = useState("");
+        const [passwordValue, setPasswordValue] = useState("");
+        const [usernameFieldColor, setUsernameFieldColor] = useState(blurColor);
+        const [passwordFieldColor, setPasswordFieldColor] = useState(blurColor);
+        const hiddenEye = IconSources.ic_hidden_eye, unhiddenEye = IconSources.ic_unhidden_eye;
+        const [hidden, setTextVision] = useState(true);
+        const [eye, setEye] = useState(hiddenEye);
+        function changeTextVision() {
+            if (!hidden) {
+                setTextVision(true);
+                setEye(hiddenEye);
+            }
+            else {
+                setTextVision(false);
+                setEye(unhiddenEye);
+            }
+        }
+
+        return (
+            <View style={{
+                flex: 8, padding: 10,
+                flexDirection: "column", justifyContent: "flex-start"
             }}>
-            <TextBox
-                text="Username"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 20,
-                    color: normalTextColor
-                }} />
-            <TextField
-                placeHolderText="Input username here"
-                placeHolderStyle={{ color: BasicColors.gray }}
-                containerStyle={{
-                    width: 250,
-                    height: 40,
-                    backgroundColor: BasicColors.white,
-                    borderWidth: 1.5,
-                    borderColor: usernameFieldColor,
-                    borderRadius: 10,
-                    padding: { paddingLeft: 10 }
-                }}
-                function={{
-                    inputMode: "text",
-                    onFocus: () => setUsernameFieldColor(focusedColor),
-                    onBlur: () => setUsernameFieldColor(blurColor),
-                    autoCapitalize: "none",
-                }} />
-            <TextBox
-                text="Password"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 20,
-                    color: normalTextColor,
-                }}
-                containerStyle={{ margin: { marginTop: 10 } }} />
-            <Container
-                childrenStyle={{
-                    flexDirection: "row",
-                    justifyContent: "flex-start",
+                <View style={{
+                    flex: 1,
+                    flexDirection: "column", justifyContent: "flex-start"
                 }}>
-                <TextField
-                    placeHolderText="Input password here"
-                    placeHolderStyle={{
-                        color: BasicColors.gray
-                    }}
-                    containerStyle={{
-                        width: 250,
-                        height: 40,
-                        backgroundColor: BasicColors.white,
-                        borderWidth: 1.5,
-                        borderColor: passwordFieldColor,
-                        borderRadius: 10,
-                        padding: { paddingLeft: 10 }
-                    }}
-                    function={{
-                        inputMode: "text",
-                        onFocus: () => setPasswordFieldColor(focusedColor),
-                        onBlur: () => setPasswordFieldColor(blurColor),
-                        autoCapitalize: "none",
-                        hideText: hidden
-                    }} />
-                <IconButton
-                    iconSource={eye}
-                    iconStyle={{
-                        width: 30,
-                        height: 30
-                    }}
-                    containerStyle={{
-                        width: 32,
-                        height: 32,
-                        borderWidth: 1,
-                        borderRadius: 10,
-                        margin: {
-                            marginStart: 10,
-                            marginTop: 4
-                        }
-                    }}
-                    function={{ onPress: () => changeTextVision() }} />
-            </Container>
-        </Container>
-    );
-}
+                    <Text
+                        children="Username"
+                        style={textStyle.title} />
+                    <TextInput
+                        placeholder="Input username here"
+                        style={[textInputStyle.w250, { borderColor: usernameFieldColor }]}
+                        inputMode="text"
+                        autoCapitalize="none"
+                        value={usernameValue}
+                        onChangeText={(newValue) => setUsernameValue(newValue)}
+                        onFocus={() => setUsernameFieldColor(focusedColor)}
+                        onBlur={() => setUsernameFieldColor(blurColor)}
+                    />
+                </View>
+                <View style={{
+                    flex: 1,
+                    flexDirection: "column", justifyContent: "flex-start"
+                }} >
+                    <Text
+                        children="Password"
+                        style={textStyle.title} />
+                    <View style={{ flexDirection: "row" }}>
+                        <TextInput
+                            placeholder="Input password here"
+                            style={[textInputStyle.w250, { borderColor: passwordFieldColor }]}
+                            inputMode="text"
+                            autoCapitalize="none"
+                            secureTextEntry={hidden}
+                            value={passwordValue}
+                            onChangeText={(newValue) => setPasswordValue(newValue)}
+                            onFocus={() => setPasswordFieldColor(focusedColor)}
+                            onBlur={() => setPasswordFieldColor(blurColor)} />
+                        <TouchableOpacity
+                            style={{
+                                width: 32, height: 32,
+                                borderWidth: 1, borderRadius: 10,
+                                alignSelf: "center", marginStart: 10
+                            }}
+                            children={
+                                <Image
+                                    source={eye}
+                                    style={{ width: 30, height: 30 }} />
+                            }
+                            onPress={() => changeTextVision()} />
+                    </View>
+                </View>
+                {BottomSection(usernameValue, passwordValue)}
+            </View>
+        );
+    }
 
-function BottomSection() {
-    const navigation = useNavigation<NativeStackNavigationProp<any>>();
-
-    return (
-        <Container
-            containerStyle={{ margin: { marginVertical: 30 } }}
-            childrenStyle={{
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center"
+    function BottomSection(username: string, password: string) {
+        return (
+            <View style={{
+                flex: 8, alignItems: "center",
+                flexDirection: "column", justifyContent: "flex-start"
             }}>
-            <TextButton
-                text="LOGIN"
-                textStyle={{
-                    color: buttonTextColor,
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    fontSize: 15
-                }}
-                containerStyle={{
-                    width: 100,
-                    height: 50,
-                    backgroundColor: buttonBackgroundColor,
-                    borderWidth: 1.5,
-                    borderColor: buttonBorderColor,
-                    borderRadius: 10
-                }}
-                function={{ onPress: () => navigation.navigate("frame") }} />
-            <TextButton
-                text="Forget password?"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "normal",
-                    fontStyle: "italic",
-                    fontSize: 15,
-                    textDecorationLine: "underline",
-                    color: linkTextColor
-                }}
-                containerStyle={{ margin: { marginVertical: 5 } }} />
-            <TextButton
-                text="Don't have an account?"
-                textStyle={{
-                    fontFamily: AndroidFontFamily.roboto,
-                    fontWeight: "normal",
-                    fontStyle: "italic",
-                    fontSize: 15,
-                    textDecorationLine: "underline",
-                    color: linkTextColor
-                }}
-                containerStyle={{ margin: { marginVertical: 5 } }}
-                function={{
-                    onPress: () => navigation.navigate("signup")
-                }} />
-        </Container>
-    );
+                <TouchableOpacity
+                    style={[textButtonStyle.container, { width: 100, height: 50 }]}
+                    children={
+                        <Text
+                            style={textButtonStyle.text}
+                            children="LOGIN" />
+                    }
+                    onPress={() => {
+                        if (username != "admin" && password != "admin123") {
+                            navigation.navigate("CustomerFrame", {
+                                HomePage: { isLogged: true },
+                                SearchPage: undefined,
+                                BookmarkPage: { isLogged: true },
+                                AccountPage: undefined
+                            })
+                        }
+                    }} />
+                <TouchableOpacity
+                    style={{ marginTop: 10 }}
+                    children={
+                        <Text style={textStyle.link}
+                            children="Forget password?"
+                            onPress={() => null} />
+                    } />
+                <TouchableOpacity
+                    style={{ marginTop: 10 }}
+                    children={
+                        <Text
+                            style={textStyle.link}
+                            children="Don't have an account?" />
+                    }
+                    onPress={() => navigation.navigate("SignupPage")} />
+            </View>
+        );
+    }
 }

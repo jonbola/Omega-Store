@@ -17,7 +17,9 @@ type ImageBoxProps = {
         borderWidth?: number;
         borderColor?: ColorValue;
         borderRadius?: number;
+        justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
         alignSelf?: "auto" | FlexAlignType;
+        alignItems?: FlexAlignType;
         margin?: MarginType;
         padding?: PaddingType;
     }
@@ -34,7 +36,9 @@ export function ImageBox(props: ImageBoxProps) {
             borderWidth: props.containerStyle?.borderWidth,
             borderColor: props.containerStyle?.borderColor,
             borderRadius: props.containerStyle?.borderRadius,
+            justifyContent: props.containerStyle?.justifyContent,
             alignSelf: props.containerStyle?.alignSelf,
+            alignItems: props.containerStyle?.alignItems,
             ...props.containerStyle?.margin,
             ...props.containerStyle?.padding
         }}>

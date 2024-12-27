@@ -8,6 +8,9 @@ import { PaddingType } from "../values/paddingType";
 type DropDownBoxProps = {
     itemList: ItemType<ValueType>[];
     containerStyle?: {
+        flex?: number;
+        flexGrow?: number;
+        flexShrink?: number;
         backgroundColor?: ColorValue;
         width?: DimensionValue;
         height?: DimensionValue;
@@ -97,6 +100,9 @@ export function DropDownBox(props: DropDownBoxProps) {
         <DropDownPicker
             listMode="SCROLLVIEW"
             style={{
+                flex: props.containerStyle?.flex,
+                flexGrow: props.containerStyle?.flexGrow,
+                flexShrink: props.containerStyle?.flexShrink,
                 backgroundColor: props.containerStyle?.backgroundColor,
                 width: props.containerStyle?.width,
                 height: props.containerStyle?.height,

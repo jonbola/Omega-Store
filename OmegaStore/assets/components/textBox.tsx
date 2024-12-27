@@ -1,4 +1,4 @@
-import { ColorValue, DimensionValue, FlexAlignType, Text } from "react-native";
+import { ColorValue, DimensionValue, FlexAlignType, Text, View } from "react-native";
 import { MarginType } from "../values/marginType";
 import { PaddingType } from "../values/paddingType";
 import { AndroidFontFamily } from "../fonts/androidFontFamily";
@@ -24,7 +24,9 @@ type TextBoxProps = {
         borderWidth?: number;
         borderColor?: ColorValue;
         borderRadius?: number;
+        justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
         alignSelf?: "auto" | FlexAlignType;
+        alignItems?: FlexAlignType;
         margin?: MarginType;
         padding?: PaddingType;
     }
@@ -32,26 +34,31 @@ type TextBoxProps = {
 
 export function TextBox(props: TextBoxProps) {
     return (
-        <Text style={{
+        <View style={{
             flex: props.containerStyle?.flex,
             flexGrow: props.containerStyle?.flexGrow,
             flexShrink: props.containerStyle?.flexShrink,
             width: props.containerStyle?.width,
             height: props.containerStyle?.height,
-            fontFamily: props.textStyle?.fontFamily,
-            fontWeight: props.textStyle?.fontWeight,
-            fontStyle: props.textStyle?.fontStyle,
-            fontSize: props.textStyle?.fontSize,
-            textDecorationLine: props.textStyle?.textDecorationLine,
-            color: props.textStyle?.color,
             borderWidth: props.containerStyle?.borderWidth,
             borderColor: props.containerStyle?.borderColor,
             borderRadius: props.containerStyle?.borderRadius,
+            justifyContent: props.containerStyle?.justifyContent,
             alignSelf: props.containerStyle?.alignSelf,
+            alignItems: props.containerStyle?.alignItems,
             ...props.containerStyle?.margin,
             ...props.containerStyle?.padding
         }}>
-            {props.text}
-        </Text>
+            <Text style={{
+                fontFamily: props.textStyle?.fontFamily,
+                fontWeight: props.textStyle?.fontWeight,
+                fontStyle: props.textStyle?.fontStyle,
+                fontSize: props.textStyle?.fontSize,
+                textDecorationLine: props.textStyle?.textDecorationLine,
+                color: props.textStyle?.color,
+            }}>
+                {props.text}
+            </Text>
+        </View>
     );
 }

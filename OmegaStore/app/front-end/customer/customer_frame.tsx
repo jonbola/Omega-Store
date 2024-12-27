@@ -1,43 +1,42 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import HomeFragment from "./home_fragment";
-import SearchFragment from "./search_fragment";
-import BookmarkFragment from "./bookmark_fragment";
-import AccountFragment from "./account_fragment";
+import HomePage from "./home_page";
+import SearchPage from "./search_page";
+import BookmarkPage from "./bookmark_page";
+import AccountPage from "./account_page";
 import { Image } from "react-native";
 import { IconSources } from "@/assets/resources/resource_directories";
-import { useNavigation } from "@react-navigation/native";
+import { RootParamsList } from "@/app/_layout";
+import { RouteProp, useRoute } from "@react-navigation/native";
 
-type CustomerFrameProps = {
-    isLogged: boolean;
-}
+type RouteProps = RouteProp<RootParamsList, "CustomerFrame">;
 
-export default function CustomerFrame(frameProps: CustomerFrameProps) {
-    const Drawer = createDrawerNavigator();
-    const navigation = useNavigation();
+export default function CustomerFrame() {
+    const Drawer = createDrawerNavigator<RootParamsList["CustomerFrame"]>();
+    const route = useRoute<RouteProps>();
 
     return (
         <Drawer.Navigator
-            initialRouteName="home"
+            initialRouteName="HomePage"
             backBehavior="history"
             screenOptions={({ route }) => ({
-                drawerStyle:{width:200},
+                drawerStyle: { width: 200 },
                 headerShown: false,
                 drawerIcon: () => {
                     let iconPath;
                     switch (route.name) {
-                        case "home": {
+                        case "HomePage": {
                             iconPath = IconSources.ic_home;
                             break;
                         }
-                        case "search": {
+                        case "SearchPage": {
                             iconPath = IconSources.ic_search;
                             break;
                         }
-                        case "bookmark": {
+                        case "BookmarkPage": {
                             iconPath = IconSources.ic_bookmark;
                             break;
                         }
-                        case "account": {
+                        case "AccountPage": {
                             iconPath = IconSources.ic_user;
                             break;
                         }
@@ -48,33 +47,28 @@ export default function CustomerFrame(frameProps: CustomerFrameProps) {
                     return (
                         <Image
                             source={iconPath}
-                            style={{
-                                width: 30,
-                                height: 30
-                            }} />
+                            style={{ width: 30, height: 30 }} />
                     )
                 }
             })}>
             <Drawer.Screen
-                options={{ drawerLabel: "Home"}}
-                name="home">
-                {props => <HomeFragment isLogged={frameProps.isLogged} />}
-            </Drawer.Screen>
+                options={{ drawerLabel: "Home" }}
+                name="HomePage"
+                component={HomePage}
+                initialParams={{ isLogged: route.params.HomePage.isLogged }} />
             <Drawer.Screen
                 options={{ drawerLabel: "Search" }}
-                name="search">
-                {props => <SearchFragment />}
-            </Drawer.Screen>
+                name="SearchPage"
+                component={SearchPage} />
             <Drawer.Screen
                 options={{ drawerLabel: "Bookmark" }}
-                name="bookmark">
-                {props => <BookmarkFragment />}
-            </Drawer.Screen>
+                name="BookmarkPage"
+                component={BookmarkPage}
+                initialParams={{ isLogged: route.params.BookmarkPage.isLogged }} />
             <Drawer.Screen
                 options={{ drawerLabel: "Account" }}
-                name="account">
-                {props => <AccountFragment />}
-            </Drawer.Screen>
+                name="AccountPage"
+                component={AccountPage} />
         </Drawer.Navigator>
     );
 }

@@ -1,7 +1,8 @@
 import React from "react";
-import { ColorValue, DimensionValue, FlexAlignType, TextInput } from "react-native";
+import { ColorValue, DimensionValue, FlexAlignType, NativeSyntheticEvent, TextInput, TextInputEndEditingEventData } from "react-native";
 import { MarginType } from "../values/marginType";
 import { PaddingType } from "../values/paddingType";
+import Container from "./container";
 
 type TextFieldProps = {
     placeHolderText?: string;
@@ -24,6 +25,9 @@ type TextFieldProps = {
         padding?: PaddingType;
     }
     function?: {
+        value?: string;
+        onChangeText?: (text: string) => void;
+        onEndEditing?: () => void;
         active?: boolean;
         inputMode?: "none" | "text" | "decimal" | "numeric" | "tel" | "search" | "email" | "url";
         autoCapitalize?: "characters" | "words" | "sentences" | "none";
@@ -34,32 +38,36 @@ type TextFieldProps = {
 }
 
 export function TextField(props: TextFieldProps) {
-    const [text, onChangeText] = React.useState("");
     return (
-        <TextInput
-            style={{
-                flex: props.containerStyle?.flex,
-                flexGrow: props.containerStyle?.flexGrow,
-                flexShrink: props.containerStyle?.flexShrink,
-                width: props.containerStyle?.width,
-                height: props.containerStyle?.height,
-                backgroundColor: props.containerStyle?.backgroundColor,
-                borderWidth: props.containerStyle?.borderWidth,
-                borderColor: props.containerStyle?.borderColor,
-                borderRadius: props.containerStyle?.borderRadius,
-                textDecorationLine: props.placeHolderStyle?.textDecorationLine,
-                ...props.containerStyle?.padding,
-                ...props.containerStyle?.margin,
-            }}
-            onChangeText={onChangeText}
-            value={text}
-            placeholder={props.placeHolderText}
-            placeholderTextColor={props.placeHolderStyle?.color}
-            secureTextEntry={props.function?.hideText}
-            editable={props.function?.active}
-            inputMode={props.function?.inputMode}
-            autoCapitalize={props.function?.autoCapitalize}
-            onFocus={props.function?.onFocus}
-            onBlur={props.function?.onBlur} />
+        <Container containerStyle={{
+            flex: props.containerStyle?.flex,
+            flexGrow: props.containerStyle?.flexGrow,
+            flexShrink: props.containerStyle?.flexShrink,
+        }}>
+            <TextInput
+                style={{
+                    width: props.containerStyle?.width,
+                    height: props.containerStyle?.height,
+                    backgroundColor: props.containerStyle?.backgroundColor,
+                    borderWidth: props.containerStyle?.borderWidth,
+                    borderColor: props.containerStyle?.borderColor,
+                    borderRadius: props.containerStyle?.borderRadius,
+                    textDecorationLine: props.placeHolderStyle?.textDecorationLine,
+                    alignSelf: props.containerStyle?.alignSelf,
+                    ...props.containerStyle?.padding,
+                    ...props.containerStyle?.margin,
+                }}
+                onChangeText={props.function?.onChangeText}
+                onEndEditing={props.function?.onEndEditing}
+                value={props.function?.value}
+                placeholder={props.placeHolderText}
+                placeholderTextColor={props.placeHolderStyle?.color}
+                secureTextEntry={props.function?.hideText}
+                editable={props.function?.active}
+                inputMode={props.function?.inputMode}
+                autoCapitalize={props.function?.autoCapitalize}
+                onFocus={props.function?.onFocus}
+                onBlur={props.function?.onBlur} />
+        </Container>
     );
 }

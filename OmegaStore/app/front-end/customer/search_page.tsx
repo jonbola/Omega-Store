@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 
-export default function SearchFragment() {
+export default function SearchPage() {
     return (
-        <View style={{marginVertical:50}}>
+        <View style={{ marginVertical: 50 }}>
             <Text>This is search page</Text>
-      </View>  
+        </View>
     );
 }

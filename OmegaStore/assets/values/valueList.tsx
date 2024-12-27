@@ -1,3 +1,9 @@
+export const genderList = [
+    { label: "Male", value: "m" },
+    { label: "Female", value: "f" },
+    { label: "Other", value: "o" }
+] //List for DropDownPicker Component
+
 export const nationList = [
     { label: "Afghanistan", value: "afghanistan" },
     { label: "Albania", value: "albania" },
@@ -194,4 +200,4 @@ export const nationList = [
     { label: "Yemen", value: "yemen" },
     { label: "Zambia", value: "zambia" },
     { label: "Zimbabwe", value: "zimbabwe" }
-]
+] //List for DropDownPicker Component
