@@ -3,11 +3,11 @@ import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, Tou
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { BasicColors } from "@/assets/colors/basic_colors";
-import { IconSources, ImageSources } from "@/assets/resources/resource_directories";
+import { Icons, Images } from "@/assets/resources/resource_directories";
 import { blurColor, focusedColor } from "@/assets/values/componentColor";
 import { RootParamsList } from "@/app/_layout";
 import React from "react";
-import { textButtonStyle, textInputStyle, textStyle } from "@/assets/values/styleSheet";
+import { iconButtonStyle, textButtonStyle, textInputStyle, textStyle } from "@/assets/values/styleSheet";
 
 type NavigationProps = NativeStackNavigationProp<RootParamsList, "LoginPage">;
 type RouteProps = RouteProp<RootParamsList, "LoginPage">;
@@ -36,7 +36,7 @@ export default function LoginPage() {
                 justifyContent: "center", alignItems: "center"
             }}>
                 <Image
-                    source={ImageSources.img_store_logo}
+                    source={Images.store_logo}
                     style={{ width: 100, height: 100 }} />
             </View>
         );
@@ -47,7 +47,7 @@ export default function LoginPage() {
         const [passwordValue, setPasswordValue] = useState("");
         const [usernameFieldColor, setUsernameFieldColor] = useState(blurColor);
         const [passwordFieldColor, setPasswordFieldColor] = useState(blurColor);
-        const hiddenEye = IconSources.ic_hidden_eye, unhiddenEye = IconSources.ic_unhidden_eye;
+        const hiddenEye = Icons.hidden_eye, unhiddenEye = Icons.unhidden_eye;
         const [hidden, setTextVision] = useState(true);
         const [eye, setEye] = useState(hiddenEye);
         function changeTextVision() {
@@ -91,7 +91,7 @@ export default function LoginPage() {
                     <Text
                         children="Password"
                         style={textStyle.title} />
-                    <View style={{ flexDirection: "row" }}>
+                    <View style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
                         <TextInput
                             placeholder="Input password here"
                             style={[textInputStyle.w250, { borderColor: passwordFieldColor }]}
@@ -103,15 +103,11 @@ export default function LoginPage() {
                             onFocus={() => setPasswordFieldColor(focusedColor)}
                             onBlur={() => setPasswordFieldColor(blurColor)} />
                         <TouchableOpacity
-                            style={{
-                                width: 32, height: 32,
-                                borderWidth: 1, borderRadius: 10,
-                                alignSelf: "center", marginStart: 10
-                            }}
+                            style={[iconButtonStyle.container30x, { marginStart: 10 }]}
                             children={
                                 <Image
                                     source={eye}
-                                    style={{ width: 30, height: 30 }} />
+                                    style={iconButtonStyle.icon30x} />
                             }
                             onPress={() => changeTextVision()} />
                     </View>
@@ -141,6 +137,13 @@ export default function LoginPage() {
                                 SearchPage: undefined,
                                 BookmarkPage: { isLogged: true },
                                 AccountPage: undefined
+                            })
+                        }
+                        else {
+                            navigation.navigate("AdminFrame", {
+                                AccountManagerPage: undefined,
+                                ProductManagerPage: undefined,
+                                CategoryManagerPage: undefined
                             })
                         }
                     }} />

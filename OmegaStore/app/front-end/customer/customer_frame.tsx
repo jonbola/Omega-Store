@@ -4,7 +4,7 @@ import SearchPage from "./search_page";
 import BookmarkPage from "./bookmark_page";
 import AccountPage from "./account_page";
 import { Image } from "react-native";
-import { IconSources } from "@/assets/resources/resource_directories";
+import { Icons } from "@/assets/resources/resource_directories";
 import { RootParamsList } from "@/app/_layout";
 import { RouteProp, useRoute } from "@react-navigation/native";
 
@@ -25,19 +25,19 @@ export default function CustomerFrame() {
                     let iconPath;
                     switch (route.name) {
                         case "HomePage": {
-                            iconPath = IconSources.ic_home;
+                            iconPath = Icons.home;
                             break;
                         }
                         case "SearchPage": {
-                            iconPath = IconSources.ic_search;
+                            iconPath = Icons.search;
                             break;
                         }
                         case "BookmarkPage": {
-                            iconPath = IconSources.ic_bookmark;
+                            iconPath = Icons.bookmark;
                             break;
                         }
                         case "AccountPage": {
-                            iconPath = IconSources.ic_user;
+                            iconPath = Icons.user;
                             break;
                         }
                         default: {

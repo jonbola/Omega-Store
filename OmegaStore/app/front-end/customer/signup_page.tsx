@@ -3,7 +3,7 @@ import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, Tou
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { BasicColors } from "@/assets/colors/basic_colors";
-import { IconSources, ImageSources } from "@/assets/resources/resource_directories";
+import { Icons, Images } from "@/assets/resources/resource_directories";
 import { blurColor, focusedColor } from "@/assets/values/componentColor";
 import { RootParamsList } from "@/app/_layout";
 import { iconButtonStyle, textButtonStyle, textInputStyle, textStyle } from "@/assets/values/styleSheet";
@@ -38,7 +38,7 @@ export default function SignupPage() {
                 justifyContent: "center", alignItems: "center"
             }}>
                 <Image
-                    source={ImageSources.img_store_logo}
+                    source={Images.store_logo}
                     style={{
                         width: 100, height: 100
                     }} />
@@ -52,7 +52,7 @@ export default function SignupPage() {
         const [passwordFieldColor, setPasswordFieldColor] = useState(blurColor);
         const [rePasswordFieldColor, setRePasswordFieldColor] = useState(blurColor);
 
-        const hiddenEye = IconSources.ic_hidden_eye, unhiddenEye = IconSources.ic_unhidden_eye;
+        const hiddenEye = Icons.hidden_eye, unhiddenEye = Icons.unhidden_eye;
         const [passwordTextHidden, setPasswordTextVision] = useState(true);
         const [rePasswordTextHidden, setRePasswordTextVision] = useState(true);
         const [passwordEye, setPasswordEye] = useState(hiddenEye);
@@ -129,10 +129,10 @@ export default function SignupPage() {
                         onBlur={() => setPasswordFieldColor(blurColor)}
                         onFocus={() => setPasswordFieldColor(focusedColor)} />
                     <TouchableOpacity
-                        style={[iconButtonStyle.container, { marginStart: 10 }]}
+                        style={[iconButtonStyle.container30x, { marginStart: 10 }]}
                         children={
                             <Image
-                                style={iconButtonStyle.icon}
+                                style={iconButtonStyle.icon30x}
                                 source={passwordEye} />
                         }
                         onPress={() => changeTextVision("passwordEye")} />
@@ -151,10 +151,10 @@ export default function SignupPage() {
                         onBlur={() => setRePasswordFieldColor(blurColor)}
                         onFocus={() => setRePasswordFieldColor(focusedColor)} />
                     <TouchableOpacity
-                        style={[iconButtonStyle.container, { marginStart: 10 }]}
+                        style={[iconButtonStyle.container30x, { marginStart: 10 }]}
                         children={
                             <Image
-                                style={iconButtonStyle.icon}
+                                style={iconButtonStyle.icon30x}
                                 source={rePasswordEye} />
                         }
                         onPress={() => changeTextVision("rePasswordEye")} />

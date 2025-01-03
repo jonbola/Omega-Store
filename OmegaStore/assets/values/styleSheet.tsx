@@ -22,7 +22,7 @@ export const textStyle = StyleSheet.create({
         fontFamily: AndroidFontFamily.roboto,
         fontWeight: "normal",
         fontStyle: "normal",
-        fontSize: 20,
+        fontSize: 15,
         color: normalTextColor,
     },
     bold: {
@@ -40,7 +40,7 @@ export const textStyle = StyleSheet.create({
         textDecorationLine: "underline",
         color: linkTextColor
     }
-})
+});
 
 export const textButtonStyle = StyleSheet.create({
     container: {
@@ -58,22 +58,39 @@ export const textButtonStyle = StyleSheet.create({
         fontWeight: "bold",
         fontStyle: "normal"
     }
-})
+});
 
 export const iconButtonStyle = StyleSheet.create({
-    container: {
+    container15x: {
+        width: 17,
+        height: 17,
+        borderWidth: 1,
+        borderRadius: 10
+    },
+    icon15x: {
+        width: 15,
+        height: 15
+    },
+    container30x: {
         width: 32,
         height: 32,
         borderWidth: 1,
         borderRadius: 10
     },
-    icon: {
+    icon30x: {
         width: 30,
         height: 30
     }
-})
+});
 
 export const textInputStyle = StyleSheet.create({
+    w150: {
+        width: 150,
+        backgroundColor: BasicColors.white,
+        borderWidth: 1.5,
+        borderRadius: 10,
+        paddingLeft: 10
+    },
     w250: {
         width: 250,
         backgroundColor: BasicColors.white,
@@ -81,11 +98,10 @@ export const textInputStyle = StyleSheet.create({
         borderRadius: 10,
         paddingLeft: 10
     },
-    w150: {
-        width: 150,
+    maxWidth: {
         backgroundColor: BasicColors.white,
         borderWidth: 1.5,
         borderRadius: 10,
         paddingLeft: 10
     }
-})
+});

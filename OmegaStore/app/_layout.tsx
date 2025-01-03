@@ -8,6 +8,8 @@ import AccountDetailManagerPage from "./front-end/admin/account_detail_manager_p
 import CategoryDetailManagerPage from "./front-end/admin/category_detail_manager_page";
 import CreateAccountPage from "./front-end/admin/create_account_page";
 import ProductDetailManagerPage from "./front-end/admin/product_detail_manager_page";
+import ProductDetailPage from "./front-end/customer/product_detail_page";
+import Product from "./back-end/models/product";
 
 export type RootParamsList = {
   CustomerFrame: {
@@ -23,6 +25,7 @@ export type RootParamsList = {
   };
   LoginPage: undefined;
   SignupPage: undefined;
+  ProductDetailPage: { product: Product };
   CreateAccountPage: undefined;
   AccountDetailManagerPage: undefined;
   ProductDetailManagerPage: undefined;
@@ -53,6 +56,9 @@ export default function RootLayout() {
         <Section.Screen
           name="SignupPage"
           component={SignupPage} />
+        <Section.Screen
+          name="ProductDetailPage"
+          component={ProductDetailPage} />
         <Section.Screen
           name="CreateAccountPage"
           component={CreateAccountPage} />

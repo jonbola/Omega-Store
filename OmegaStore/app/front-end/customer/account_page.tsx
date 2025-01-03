@@ -1,7 +1,7 @@
 import { RootParamsList } from "@/app/_layout";
 import { BasicColors } from "@/assets/colors/basic_colors";
 import { ThemeColors } from "@/assets/colors/theme_colors";
-import { IconSources } from "@/assets/resources/resource_directories";
+import { Icons } from "@/assets/resources/resource_directories";
 import { blurColor, buttonBorderColor, focusedColor, } from "@/assets/values/componentColor";
 import { textButtonStyle, textInputStyle, textStyle } from "@/assets/values/styleSheet";
 import { genderList, nationList } from "@/assets/values/valueList";
@@ -48,7 +48,7 @@ export default function AccountPage() {
                     children={
                         <Image
                             style={{ width: 20, height: 20 }}
-                            source={IconSources.ic_drawer} />
+                            source={Icons.drawer} />
                     }
                     onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)} />
                 <Text style={textStyle.header}
@@ -94,7 +94,7 @@ export default function AccountPage() {
                                     borderColor: buttonBorderColor,
                                     borderWidth: 1.5, borderRadius: 15,
                                 }}
-                                source={IconSources.ic_user} />
+                                source={Icons.user} />
                         } />
                     <View style={{
                         flex: 1,
@@ -126,7 +126,7 @@ export default function AccountPage() {
                                         children={
                                             <Image
                                                 style={{ width: 25, height: 25 }}
-                                                source={IconSources.ic_calendar} />
+                                                source={Icons.calendar} />
                                         } />
                                     :
                                     <View style={{ width: 25, height: 25 }} />
@@ -283,7 +283,7 @@ export default function AccountPage() {
                                 children={
                                     <Image
                                         style={{ width: 30, height: 30 }}
-                                        source={IconSources.ic_accept} />
+                                        source={Icons.accept} />
                                 }
                                 onPress={() => setEditingStatus(false)} />
                             <TouchableOpacity
@@ -291,7 +291,7 @@ export default function AccountPage() {
                                 children={
                                     <Image
                                         style={{ width: 20, height: 20 }}
-                                        source={IconSources.ic_cancel} />
+                                        source={Icons.cancel} />
                                 }
                                 onPress={() => setEditingStatus(false)} />
                         </View>
