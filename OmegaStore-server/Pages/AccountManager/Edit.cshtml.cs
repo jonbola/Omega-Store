@@ -13,15 +13,18 @@ namespace OmegaStore_server.Pages_AccountManager
 {
     public class EditModel : PageModel
     {
-        private readonly OmegaStore_server.Data.OmegaStoreDatabase _context;
+        private readonly OmegaStore_server.Data.OmegaStoreContext _context;
 
-        public EditModel(OmegaStore_server.Data.OmegaStoreDatabase context)
+        public EditModel(OmegaStore_server.Data.OmegaStoreContext context)
         {
             _context = context;
         }
 
         [BindProperty]
         public Account Account { get; set; } = default!;
+
+        [BindProperty]
+        public AccountInfo AccountInfo { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -30,12 +33,17 @@ namespace OmegaStore_server.Pages_AccountManager
                 return NotFound();
             }
 
-            var account =  await _context.Account.FirstOrDefaultAsync(m => m.Id == id);
-            if (account == null)
+            var account = await _context.Account.FirstOrDefaultAsync(m => m.Id == id);
+            var accountInfo = await _context.AccountInfo.FirstOrDefaultAsync(m => m.AccountId == id);
+
+            if (account == null || accountInfo == null)
             {
                 return NotFound();
             }
+
             Account = account;
+            AccountInfo = accountInfo;
+
             return Page();
         }
 
@@ -48,7 +56,9 @@ namespace OmegaStore_server.Pages_AccountManager
                 return Page();
             }
 
+            Account.Editable = true;
             _context.Attach(Account).State = EntityState.Modified;
+            _context.Attach(AccountInfo).State = EntityState.Modified;
 
             try
             {
@@ -56,10 +66,11 @@ namespace OmegaStore_server.Pages_AccountManager
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AccountExists(Account.Id))
+                if (!AccountExists(Account.Id) && !AccountInfoExists(AccountInfo.AccountId))
                 {
                     return NotFound();
                 }
+
                 else
                 {
                     throw;
@@ -72,6 +83,11 @@ namespace OmegaStore_server.Pages_AccountManager
         private bool AccountExists(long id)
         {
             return _context.Account.Any(e => e.Id == id);
+        }
+
+        private bool AccountInfoExists(long accountId)
+        {
+            return _context.AccountInfo.Any(e => e.AccountId == accountId);
         }
     }
 }

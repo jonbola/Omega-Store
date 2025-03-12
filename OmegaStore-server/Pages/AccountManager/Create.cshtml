@@ -14,19 +14,19 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="control-label">Account Name</label>
+                <label class="control-label" asp-for="Account.AccountName"></label>
                 <input asp-for="Account.AccountName" class="form-control" />
                 <span asp-validation-for="Account.AccountName" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
-                <label class="control-label">Password</label>
+                <label class="control-label" asp-for="Account.Password"></label>
                 <input asp-for="Account.Password" class="form-control" />
                 <span asp-validation-for="Account.Password" class="text-danger"></span>
             </div>
             <br>
             <div style="display: flex; flex-direction: column;">
-                <label class="control-label">Role</label>
+                <label class="control-label" asp-for="Account.Role"></label>
                 <select asp-for="Account.Role" class="form-control">
                     <option value="false">Customer</option>
                     <option value="true">Admin</option>
@@ -44,19 +44,19 @@
                 <div class="form-group form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" asp-for="Account.Deletable" /> @Html.DisplayNameFor(model =>
-                        model.Account.Deletable)
+                                                model.Account.Deletable)
                     </label>
                 </div>
             </div>
             <br>
             <div class="form-group">
-                <label class="control-label">Created Date</label>
+                <label class="control-label" asp-for="Account.CreatedDate"></label>
                 <input asp-for="Account.CreatedDate" class="form-control" />
                 <span asp-validation-for="Account.CreatedDate" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Next" class="btn btn-primary" />
             </div>
         </form>
     </div>

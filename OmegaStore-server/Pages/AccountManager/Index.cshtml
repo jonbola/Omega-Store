@@ -13,12 +13,24 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Account Name</th>
-            <th>Password</th>
-            <th>Role</th>
-            <th>Editable</th>
-            <th>Deletable</th>
-            <th>Created Date</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].AccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Editable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Deletable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].CreatedDate)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -47,7 +59,8 @@
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id" data-editable="@item.Editable" class="edit-btn">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id" data-deletable="@item.Deletable" class="delete-btn">Delete</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" data-deletable="@item.Deletable"
+                        class="delete-btn">Delete</a>
                 </td>
             </tr>
         }
@@ -55,29 +68,5 @@
 </table>
 
 @section Scripts {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var editButtons = document.querySelectorAll(".edit-btn");
-            var deleteButtons = document.querySelectorAll(".delete-btn");
-
-            editButtons.forEach(function (btn) {
-                btn.addEventListener("click", function (event) {
-                    var isEditable = btn.getAttribute("data-editable") === "True";
-                    if (!isEditable) {
-                        event.preventDefault();
-                        alert("This account cannot be edited.");
-                    }
-                });
-            });
-            deleteButtons.forEach(function (btn) {
-                btn.addEventListener("click", function (event) {
-                    var isDeletable = btn.getAttribute("data-deletable") === "True";
-                    if (!isDeletable) {
-                        event.preventDefault();
-                        alert("This account cannot be deleted.");
-                    }
-                });
-            });
-        });
-    </script>
+    @await Html.PartialAsync("~/Assets/Scripts/ButtonScript.cshtml")
 }

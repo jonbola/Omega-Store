@@ -27,19 +27,19 @@
             @Html.DisplayNameFor(model => model.Account.Role)
         </dt>
         <dd class="col-sm-10">
-            @(Model.Account.Role?"Admin":"Customer")
+            @(Model.Account.Role ? "Admin" : "Customer")
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Account.Editable)
         </dt>
         <dd class="col-sm-10">
-            @(Model.Account.Editable?"Yes":"No")
+            @(Model.Account.Editable ? "Yes" : "No")
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Account.Deletable)
         </dt>
         <dd class="col-sm-10">
-            @(Model.Account.Deletable?"Yes":"No")
+            @(Model.Account.Deletable ? "Yes" : "No")
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Account.CreatedDate)
@@ -49,26 +49,62 @@
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Account.Id" data-editable="@Model.Account.Editable" class="edit-btn">Edit</a> |
+    <h4>Info</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @GetTextList.GetGenderText(Model.AccountInfo.Gender??"")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.Nation)
+        </dt>
+        <dd class="col-sm-10">
+            @GetTextList.GetNationText(Model.AccountInfo.Nation??"")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.BirthDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.BirthDate)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Account.Id" data-editable="@Model.Account.Editable"
+        class="edit-btn">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var editButtons = document.querySelectorAll(".edit-btn");
-            var deleteButtons = document.querySelectorAll(".delete-btn");
-
-            editButtons.forEach(function (btn) {
-                btn.addEventListener("click", function (event) {
-                    var isEditable = btn.getAttribute("data-editable") === "True";
-                    if (!isEditable) {
-                        event.preventDefault();
-                        alert("This account cannot be edited.");
-                    }
-                });
-            });
-        });
-    </script>
+    @await Html.PartialAsync("~/Assets/Scripts/ButtonScript.cshtml")
 }

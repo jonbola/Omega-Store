@@ -1,52 +1,24 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaStore-server", "OmegaStore-server.csproj", "{A889C4B9-E7B8-4FDA-BFCE-C7FE46735735}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "d:", "d:\", "{9BD7D727-BF50-4A61-8B90-A25D0E5503AD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Works", "Works", "{9B01F58B-9947-4EA8-9415-4C67408B4E31}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{449A5D9B-2CB8-413C-B40D-0CE536BE0A8E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Development Work", "Development Work", "{6024AD8D-9935-43CF-9C13-3BCE08B30B6A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visual Studio Code", "Visual Studio Code", "{DE1C6A6D-5CDE-4B39-A213-E6DBCE93CF66}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web App", "Web App", "{34365C02-4975-4B03-A93B-D3CBD67D65B5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStudy", "d:\Works\Document\Development Work\Visual Studio Code\Web App\WebStudy\WebStudy.csproj", "{819CF0B6-AB55-482A-B028-8D74B269FB57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegaStore-server", "OmegaStore-server.csproj", "{0EC213D2-E650-C30B-4B14-2AD072167767}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EC213D2-E650-C30B-4B14-2AD072167767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC213D2-E650-C30B-4B14-2AD072167767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC213D2-E650-C30B-4B14-2AD072167767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC213D2-E650-C30B-4B14-2AD072167767}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A889C4B9-E7B8-4FDA-BFCE-C7FE46735735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A889C4B9-E7B8-4FDA-BFCE-C7FE46735735}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A889C4B9-E7B8-4FDA-BFCE-C7FE46735735}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A889C4B9-E7B8-4FDA-BFCE-C7FE46735735}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4FB059C-9118-4A92-8B93-B56C8EB7E6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4FB059C-9118-4A92-8B93-B56C8EB7E6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4FB059C-9118-4A92-8B93-B56C8EB7E6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4FB059C-9118-4A92-8B93-B56C8EB7E6BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{819CF0B6-AB55-482A-B028-8D74B269FB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{819CF0B6-AB55-482A-B028-8D74B269FB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{819CF0B6-AB55-482A-B028-8D74B269FB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{819CF0B6-AB55-482A-B028-8D74B269FB57}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9B01F58B-9947-4EA8-9415-4C67408B4E31} = {9BD7D727-BF50-4A61-8B90-A25D0E5503AD}
-		{449A5D9B-2CB8-413C-B40D-0CE536BE0A8E} = {9B01F58B-9947-4EA8-9415-4C67408B4E31}
-		{6024AD8D-9935-43CF-9C13-3BCE08B30B6A} = {449A5D9B-2CB8-413C-B40D-0CE536BE0A8E}
-		{DE1C6A6D-5CDE-4B39-A213-E6DBCE93CF66} = {6024AD8D-9935-43CF-9C13-3BCE08B30B6A}
-		{34365C02-4975-4B03-A93B-D3CBD67D65B5} = {DE1C6A6D-5CDE-4B39-A213-E6DBCE93CF66}
-		{819CF0B6-AB55-482A-B028-8D74B269FB57} = {34365C02-4975-4B03-A93B-D3CBD67D65B5}
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F289AFB0-07D3-416A-BBE2-80FE200D54AA}
 	EndGlobalSection
 EndGlobal

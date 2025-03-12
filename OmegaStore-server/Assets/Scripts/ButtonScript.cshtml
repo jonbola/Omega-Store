@@ -1,0 +1,25 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var editButtons = document.querySelectorAll(".edit-btn");
+        var deleteButtons = document.querySelectorAll(".delete-btn");
+
+        editButtons.forEach(function (btn) {
+            btn.addEventListener("click", function (event) {
+                var isEditable = btn.getAttribute("data-editable") === "True";
+                if (!isEditable) {
+                    event.preventDefault();
+                    alert("This account cannot be edited.");
+                }
+            });
+        });
+        deleteButtons.forEach(function (btn) {
+            btn.addEventListener("click", function (event) {
+                var isDeletable = btn.getAttribute("data-deletable") === "True";
+                if (!isDeletable) {
+                    event.preventDefault();
+                    alert("This account cannot be deleted.");
+                }
+            });
+        });
+    });
+</script>

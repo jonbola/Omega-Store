@@ -12,14 +12,16 @@ namespace OmegaStore_server.Pages_AccountManager
 {
     public class DetailsModel : PageModel
     {
-        private readonly OmegaStore_server.Data.OmegaStoreDatabase _context;
+        private readonly OmegaStore_server.Data.OmegaStoreContext _context;
 
-        public DetailsModel(OmegaStore_server.Data.OmegaStoreDatabase context)
+        public DetailsModel(OmegaStore_server.Data.OmegaStoreContext context)
         {
             _context = context;
         }
 
         public Account Account { get; set; } = default!;
+
+        public AccountInfo AccountInfo { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -29,10 +31,12 @@ namespace OmegaStore_server.Pages_AccountManager
             }
 
             var account = await _context.Account.FirstOrDefaultAsync(m => m.Id == id);
+            var accountInfo = await _context.AccountInfo.FirstOrDefaultAsync(m => m.AccountId == id);
 
-            if (account is not null)
+            if (account is not null && accountInfo is not null)
             {
                 Account = account;
+                AccountInfo = accountInfo;
 
                 return Page();
             }

@@ -49,6 +49,52 @@
             @Html.DisplayFor(model => model.Account.CreatedDate)
         </dd>
     </dl>
+    <h4>Info</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @GetTextList.GetGenderText(Model.AccountInfo.Gender ?? "")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.Nation)
+        </dt>
+        <dd class="col-sm-10">
+            @GetTextList.GetNationText(Model.AccountInfo.Nation ?? "")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountInfo.BirthDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountInfo.BirthDate)
+        </dd>
+    </dl>
 
     <form method="post">
         <input type="hidden" asp-for="Account.Id" />
