@@ -1,0 +1,52 @@
+@page
+@model OmegaStore_server.Pages_CategoryManager.IndexModel
+
+@{
+    ViewData["Title"] = "Category Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].Products)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Category)
+        {
+            <tr>
+                @{
+                    var productList = (item.Products != null) ? item.Products.Select(p => new SelectListItem { Text = p.Name, Value = p.Id.ToString() }).ToList() : new List<SelectListItem>();
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="max-width: 400px;">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <select class="form-control" asp-items="productList" size="5"></select>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

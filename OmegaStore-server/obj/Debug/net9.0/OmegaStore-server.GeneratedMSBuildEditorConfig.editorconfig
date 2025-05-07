@@ -17,85 +17,141 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OmegaStore_server
 build_property.RootNamespace = OmegaStore_server
-build_property.ProjectDir = C:\Users\jonbo\Downloads\OmegaStore-server (Backups)\OmegaStore-server\
+build_property.ProjectDir = D:\Works\Document\Development Work\Visual Studio Code\Mobile App\React Native\Online Smartphone Store\OmegaStore-server\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\jonbo\Downloads\OmegaStore-server (Backups)\OmegaStore-server
+build_property.MSBuildProjectDirectory = D:\Works\Document\Development Work\Visual Studio Code\Mobile App\React Native\Online Smartphone Store\OmegaStore-server
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Assets/Scripts/ButtonScript.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXNzZXRzXFNjcmlwdHNcQnV0dG9uU2NyaXB0LmNzaHRtbA==
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Assets/Scripts/AccountButtonsScript.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXNzZXRzXFNjcmlwdHNcQWNjb3VudEJ1dHRvbnNTY3JpcHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Assets/Scripts/Select2Script.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Assets/Scripts/DisplayChangeConfirmScript.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXNzZXRzXFNjcmlwdHNcRGlzcGxheUNoYW5nZUNvbmZpcm1TY3JpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Assets/Scripts/DisplayDeletingAlertScript.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXNzZXRzXFNjcmlwdHNcRGlzcGxheURlbGV0aW5nQWxlcnRTY3JpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Assets/Scripts/InputImageScript.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXNzZXRzXFNjcmlwdHNcSW5wdXRJbWFnZVNjcmlwdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Assets/Scripts/Select2Script.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXNzZXRzXFNjcmlwdHNcU2VsZWN0MlNjcmlwdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountInfoManager/Create.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/AccountInfoManager/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudEluZm9NYW5hZ2VyXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountInfoManager/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudEluZm9NYW5hZ2VyXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountInfoManager/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudEluZm9NYW5hZ2VyXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountInfoManager/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudEluZm9NYW5hZ2VyXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountInfoManager/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudEluZm9NYW5hZ2VyXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountManager/Create.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/AccountManager/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudE1hbmFnZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountManager/Delete.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/AccountManager/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudE1hbmFnZXJcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountManager/Details.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/AccountManager/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudE1hbmFnZXJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountManager/Edit.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/AccountManager/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudE1hbmFnZXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/AccountManager/Index.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/AccountManager/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudE1hbmFnZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/Error.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/CategoryManager/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlNYW5hZ2VyXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/CategoryManager/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlNYW5hZ2VyXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/CategoryManager/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlNYW5hZ2VyXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/CategoryManager/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlNYW5hZ2VyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/CategoryManager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlNYW5hZ2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/Index.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ManufacturerManager/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudWZhY3R1cmVyTWFuYWdlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ManufacturerManager/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudWZhY3R1cmVyTWFuYWdlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ManufacturerManager/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudWZhY3R1cmVyTWFuYWdlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ManufacturerManager/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudWZhY3R1cmVyTWFuYWdlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ManufacturerManager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFudWZhY3R1cmVyTWFuYWdlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ProductManager/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdE1hbmFnZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ProductManager/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdE1hbmFnZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ProductManager/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdE1hbmFnZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ProductManager/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdE1hbmFnZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/ProductManager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdE1hbmFnZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/_ViewImports.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/_ViewStart.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonbo/Downloads/OmegaStore-server (Backups)/OmegaStore-server/Pages/Shared/_Layout.cshtml]
+[D:/Works/Document/Development Work/Visual Studio Code/Mobile App/React Native/Online Smartphone Store/OmegaStore-server/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-7s9t8earpq

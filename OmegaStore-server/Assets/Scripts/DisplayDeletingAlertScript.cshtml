@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        window.onload = function () {
+            displayAlertBox("@Html.Raw(TempData["ErrorMessage"])");
+        };
+    </script>
+}
+
+<script>
+    function displayAlertBox(message) {
+        Swal.fire({
+            title: "System's Message",
+            text: message,
+            icon: "warning",
+            confirmButtonText: "Back"
+        });
+    }
+</script>

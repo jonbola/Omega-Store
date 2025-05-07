@@ -1,8 +1,11 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using OmegaStore_server.Data;
 
 public static class ValueList
 {
-    public static List<SelectListItem> GenderList { get; set; } = new List<SelectListItem>
+    public static List<SelectListItem> SelectGenderList { get; set; } = new List<SelectListItem>
     {
         new SelectListItem { Text= "-", Value= "-" },
         new SelectListItem { Text= "Male", Value= "m" },
@@ -10,7 +13,7 @@ public static class ValueList
         new SelectListItem { Text= "Other", Value= "o" }
     };
 
-    public static List<SelectListItem> NationList { get; set; } = new List<SelectListItem>
+    public static List<SelectListItem> SelectNationList { get; set; } = new List<SelectListItem>
     {
         new SelectListItem { Text= "-", Value= "-" },
         new SelectListItem { Text= "Afghanistan", Value= "afghanistan" },
@@ -210,4 +213,69 @@ public static class ValueList
         new SelectListItem { Text= "Zambia", Value= "zambia" },
         new SelectListItem { Text= "Zimbabwe", Value= "zimbabwe" }
     };
+
+    public static async Task<List<SelectListItem>> SelectAccountList(OmegaStoreContext context)
+    {
+        try
+        {
+            return await context.Account.Select(a => new SelectListItem { Text = a.AccountName, Value = a.Id.ToString() }).ToListAsync();
+        }
+
+        catch
+        {
+            return new List<SelectListItem> { };
+        }
+    }
+
+    public static async Task<List<SelectListItem>> SelectAccountInfoList(OmegaStoreContext context)
+    {
+        try
+        {
+            return await context.AccountInfo.Select(i => new SelectListItem { Text = String.Concat(i.FirstName, " ", i.LastName), Value = i.Id.ToString() }).ToListAsync();
+        }
+
+        catch
+        {
+            return new List<SelectListItem> { };
+        }
+    }
+
+    public static async Task<List<SelectListItem>> SelectProductList(OmegaStoreContext context)
+    {
+        try
+        {
+            return await context.Product.Select(p => new SelectListItem { Text = p.Name, Value = p.Id.ToString() }).ToListAsync();
+        }
+
+        catch
+        {
+            return new List<SelectListItem> { };
+        }
+    }
+
+    public static async Task<List<SelectListItem>> SelectCategoryList(OmegaStoreContext context)
+    {
+        try
+        {
+            return await context.Category.Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToListAsync();
+        }
+
+        catch
+        {
+            return new List<SelectListItem> { };
+        }
+    }
+
+    public static async Task<List<SelectListItem>> SelectManufacturerList(OmegaStoreContext context)
+    {
+        try
+        {
+            return await context.Manufacturer.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToListAsync();
+        }
+
+        catch
+        {
+            return new List<SelectListItem> { };
+        }
+    }
 }

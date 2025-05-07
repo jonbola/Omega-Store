@@ -1,0 +1,26 @@
+<script>
+    const image = document.querySelectorAll(".image-button");
+    const input = document.querySelectorAll(".input-file");
+
+    window.addEventListener("DOMContentLoaded", () => {
+        image.forEach((image, index) => {
+            image.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (input[index]) {
+                    input[index].click();
+                }
+            });
+        });
+    });
+
+    document.querySelector(".input-file").addEventListener("change", function (event) {
+        var imageFile = event.target.files[0];
+        if (imageFile) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.querySelector(".image-button").src = e.target.result;
+            }
+            reader.readAsDataURL(imageFile);
+        }
+    });
+</script>

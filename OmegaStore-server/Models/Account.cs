@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using OmegaStore_server.Data;
 
 namespace OmegaStore_server.Models;
 
@@ -25,4 +26,41 @@ public class Account
 
     [Timestamp]
     public byte[]? AsyncVersion { get; set; }
+
+    public static void CreateSeedData(OmegaStoreContext context)
+    {
+        context.Account.AddRange(
+            new Account
+            {
+                AccountName = "admin@123",
+                Password = "1",
+                Role = true,
+                Editable = false,
+                Deletable = false,
+                CreatedDate = DateTime.Parse("2025-02-15T12:00:00")
+            },
+
+            new Account
+            {
+                AccountName = "phuc",
+                Password = "123",
+                Role = false,
+                Editable = true,
+                Deletable = true,
+                CreatedDate = DateTime.Parse("2025-02-15T12:00:00")
+            },
+
+            new Account
+            {
+                AccountName = "mrjon",
+                Password = "123",
+                Role = false,
+                Editable = true,
+                Deletable = true,
+                CreatedDate = DateTime.Parse("2025-02-15T12:00:00")
+            }
+        );
+
+        context.SaveChanges();
+    }
 }

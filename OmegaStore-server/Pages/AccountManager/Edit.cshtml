@@ -2,7 +2,7 @@
 @model OmegaStore_server.Pages_AccountManager.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Account";
 }
 
 <h1>Edit</h1>
@@ -37,7 +37,7 @@
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Account.Deletable" /> @Html.DisplayNameFor(model =>
-                    model.Account.Deletable)
+                                        model.Account.Deletable)
                 </label>
             </div>
             <br>
@@ -88,15 +88,15 @@
             <br>
             <div class="form-group">
                 <label asp-for="AccountInfo.Gender" class="control-label"></label>
-                <select asp-for="AccountInfo.Gender" id="select2gender" class="form-control"
-                    asp-items="@ValueList.GenderList"></select>
+                <select asp-for="AccountInfo.Gender" class="form-control select2"
+                    asp-items="@Model.SelectGenderList"></select>
                 <span asp-validation-for="AccountInfo.Gender" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
                 <label asp-for="AccountInfo.Nation" class="control-label"></label>
-                <select asp-for="AccountInfo.Nation" id="select2nation" class="form-control"
-                    asp-items="@ValueList.NationList"></select>
+                <select asp-for="AccountInfo.Nation" class="form-control select2"
+                    asp-items="@Model.SelectNationList"></select>
                 <span asp-validation-for="AccountInfo.Nation" class="text-danger"></span>
             </div>
             <br>

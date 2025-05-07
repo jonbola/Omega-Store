@@ -1,0 +1,82 @@
+@page
+@model OmegaStore_server.Pages_ProductManager.CreateModel
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display: flex;">
+                <img src="~/Images/Icons/ic_insert_image.png" class="form-control image-button">
+                <input type="file" asp-for="Product.Image" class="form-control input-file" name="Image"
+                    style="visibility: hidden;">
+                <span asp-validation-for="Product.Image" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Product.Description" class="control-label"></label>
+                <input asp-for="Product.Description" class="form-control" />
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Product.Stock" class="control-label"></label>
+                <input asp-for="Product.Stock" class="form-control" />
+                <span asp-validation-for="Product.Stock" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Product.WarrantyPeriod" class="control-label"></label>
+                <input asp-for="Product.WarrantyPeriod" class="form-control" />
+                <span asp-validation-for="Product.WarrantyPeriod" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Product.Category" class="control-label"></label>
+                <select asp-for="Product.CategoryId" class="form-control select2"
+                    asp-items="@Model.SelectCategoryList"></select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Product.Manufacturer" class="control-label"></label>
+                <select asp-for="Product.ManufacturerId" class="form-control select2"
+                    asp-items="@Model.SelectManufacturerList"></select>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @await Html.PartialAsync("~/Assets/Scripts/Select2Script.cshtml");
+    @await Html.PartialAsync("~/Assets/Scripts/InputImageScript.cshtml");
+}

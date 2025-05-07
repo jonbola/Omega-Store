@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OmegaStore-server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee7d2bc0371f868cb721e90f891353e3872701d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("OmegaStore-server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OmegaStore-server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

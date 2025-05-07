@@ -17,21 +17,6 @@ namespace OmegaStore_server.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
 
-            modelBuilder.Entity("CategoryProduct", b =>
-                {
-                    b.Property<long>("CategoriesId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("ProductsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("CategoriesId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CategoryProduct");
-                });
-
             modelBuilder.Entity("OmegaStore_server.Models.Account", b =>
                 {
                     b.Property<long>("Id")
@@ -130,10 +115,31 @@ namespace OmegaStore_server.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("OmegaStore_server.Models.Manufacturer", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Manufacturer");
+                });
+
             modelBuilder.Entity("OmegaStore_server.Models.Product", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -142,17 +148,27 @@ namespace OmegaStore_server.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("TEXT");
 
+                    b.Property<long>("ManufacturerId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                    b.Property<float>("Price")
+                        .HasColumnType("REAL");
 
                     b.Property<int?>("Stock")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double?>("WarrantyPeriod")
+                        .HasColumnType("REAL");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ManufacturerId");
 
                     b.ToTable("Product");
                 });
@@ -206,19 +222,23 @@ namespace OmegaStore_server.Migrations
                     b.ToTable("PurchaseItem");
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("OmegaStore_server.Models.Product", b =>
                 {
-                    b.HasOne("OmegaStore_server.Models.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
+                    b.HasOne("OmegaStore_server.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OmegaStore_server.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
+                    b.HasOne("OmegaStore_server.Models.Manufacturer", "Manufacturer")
+                        .WithMany("Products")
+                        .HasForeignKey("ManufacturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Manufacturer");
                 });
 
             modelBuilder.Entity("OmegaStore_server.Models.Purchase", b =>
@@ -250,6 +270,16 @@ namespace OmegaStore_server.Migrations
             modelBuilder.Entity("OmegaStore_server.Models.Account", b =>
                 {
                     b.Navigation("Purchases");
+                });
+
+            modelBuilder.Entity("OmegaStore_server.Models.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("OmegaStore_server.Models.Manufacturer", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("OmegaStore_server.Models.Purchase", b =>

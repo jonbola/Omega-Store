@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jonbo\\Downloads\\OmegaStore-server (Backups)\\OmegaStore-server\\OmegaStore-server.csproj": {}
+    "D:\\Works\\Document\\Development Work\\Visual Studio Code\\Mobile App\\React Native\\Online Smartphone Store\\OmegaStore-server\\OmegaStore-server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jonbo\\Downloads\\OmegaStore-server (Backups)\\OmegaStore-server\\OmegaStore-server.csproj": {
+    "D:\\Works\\Document\\Development Work\\Visual Studio Code\\Mobile App\\React Native\\Online Smartphone Store\\OmegaStore-server\\OmegaStore-server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jonbo\\Downloads\\OmegaStore-server (Backups)\\OmegaStore-server\\OmegaStore-server.csproj",
+        "projectUniqueName": "D:\\Works\\Document\\Development Work\\Visual Studio Code\\Mobile App\\React Native\\Online Smartphone Store\\OmegaStore-server\\OmegaStore-server.csproj",
         "projectName": "OmegaStore-server",
-        "projectPath": "C:\\Users\\jonbo\\Downloads\\OmegaStore-server (Backups)\\OmegaStore-server\\OmegaStore-server.csproj",
+        "projectPath": "D:\\Works\\Document\\Development Work\\Visual Studio Code\\Mobile App\\React Native\\Online Smartphone Store\\OmegaStore-server\\OmegaStore-server.csproj",
         "packagesPath": "C:\\Users\\jonbo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jonbo\\Downloads\\OmegaStore-server (Backups)\\OmegaStore-server\\obj\\",
+        "outputPath": "D:\\Works\\Document\\Development Work\\Visual Studio Code\\Mobile App\\React Native\\Online Smartphone Store\\OmegaStore-server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jonbo\\AppData\\Roaming\\NuGet\\NuGet.Config",

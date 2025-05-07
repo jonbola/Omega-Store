@@ -29,11 +29,18 @@ namespace OmegaStore_server.Pages_AccountInfoManager
                 AccountId = account.Id
             };
 
+            SelectGenderList = ValueList.SelectGenderList;
+            SelectNationList = ValueList.SelectNationList;
+
             return Page();
         }
 
         [BindProperty]
         public AccountInfo AccountInfo { get; set; } = default!;
+
+        public List<SelectListItem> SelectGenderList { get; set; } = default!;
+
+        public List<SelectListItem> SelectNationList { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()

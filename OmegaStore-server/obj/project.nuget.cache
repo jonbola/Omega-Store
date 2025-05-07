@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XzMDvgqQSqY=",
+  "dgSpecHash": "tZGk09AmmMA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonbo\\Downloads\\OmegaStore-server (Backups)\\OmegaStore-server\\OmegaStore-server.csproj",
+  "projectFilePath": "D:\\Works\\Document\\Development Work\\Visual Studio Code\\Mobile App\\React Native\\Online Smartphone Store\\OmegaStore-server\\OmegaStore-server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonbo\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\jonbo\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

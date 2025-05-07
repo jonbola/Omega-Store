@@ -2,7 +2,7 @@
 @model OmegaStore_server.Pages_AccountManager.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Account Detail";
 }
 
 <h1>Details</h1>
@@ -101,10 +101,12 @@
 
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Account.Id" data-editable="@Model.Account.Editable"
-        class="edit-btn">Edit</a> |
+        class="account-edit-btn">Edit</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Account.Id" data-deletable="@Model.Account.Deletable"
+        class="account-delete-btn">Delete</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @await Html.PartialAsync("~/Assets/Scripts/ButtonScript.cshtml")
+    @await Html.PartialAsync("~/Assets/Scripts/AccountButtonsScript.cshtml")
 }

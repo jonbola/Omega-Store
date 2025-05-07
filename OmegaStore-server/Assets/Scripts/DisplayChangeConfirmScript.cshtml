@@ -1,0 +1,32 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var inputField = document.querySelector(".input-name");
+        var currentValue = inputField.value;
+
+        document.querySelector('form').addEventListener("submit", function (event) {
+            if (inputField.value !== currentValue) {
+                event.preventDefault();
+                displayConfirmBox(inputField, currentValue);
+            }
+        });
+    });
+
+    function displayConfirmBox(inputField, currentValue) {
+        Swal.fire({
+            title: "System's Message: Confirm",
+            text: "@Html.Raw(TempData["ConfirmMessage"])",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                inputField.form.submit();
+            } else {
+                inputField.value = currentValue;
+            }
+        });
+    }
+</script>

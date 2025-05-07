@@ -4,11 +4,11 @@ public static class GetTextList
 {
     public static string GetGenderText(string value)
     {
-        return ValueList.GenderList.FirstOrDefault(v => v.Value == value)?.Text ?? "";
+        return ValueList.SelectGenderList.FirstOrDefault(v => v.Value == value)?.Text ?? "";
     }
 
     public static string GetNationText(string value)
     {
-        return ValueList.NationList.FirstOrDefault(v => v.Value == value)?.Text ?? "";
+        return ValueList.SelectNationList.FirstOrDefault(v => v.Value == value)?.Text ?? "";
     }
 }
