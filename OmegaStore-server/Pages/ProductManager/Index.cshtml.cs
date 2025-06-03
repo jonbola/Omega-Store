@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,20 @@ namespace OmegaStore_server.Pages_ProductManager
             _context = context;
         }
 
-        public IList<Product> Product { get; set; } = default!;
+        public IList<Product> Products { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true)]
+        [Display(Prompt = "Input product's name to search")]
+        public string? SearchString { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Product = await _context.Product.Include(p => p.Category).Include(p => p.Manufacturer).ToListAsync();
+            Products = await _context.Product.Include(p => p.Category).Include(p => p.Manufacturer).ToListAsync();
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                Products = Products.Where(p => p.Name.ToLower().Contains(SearchString.ToLower())).ToList();
+            }
         }
     }
 }

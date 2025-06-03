@@ -30,6 +30,8 @@ public class Product
 
     public Manufacturer? Manufacturer { get; set; }
 
+    public ICollection<PurchaseItem>? PurchaseItems { get; set; }
+
     public static void CreateSeedData(OmegaStoreContext context)
     {
         context.Product.AddRange(

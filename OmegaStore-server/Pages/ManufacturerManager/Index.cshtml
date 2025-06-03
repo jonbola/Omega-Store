@@ -10,34 +10,32 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<br>
+<form style="display: flex; flex-direction: row;">
+    <h4 style="flex: 1;">Search:</h4>
+    <input type="text" asp-for="SearchString" class="form-control" style="flex: 4;">
+    <span style="flex: 5;"></span>
+</form>
+<br>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Manufacturer[0].Name)
+                @Html.DisplayNameFor(model => model.Manufacturers[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Manufacturer[0].Address)
+                @Html.DisplayNameFor(model => model.Manufacturers[0].Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Manufacturer[0].Products)
+                @Html.DisplayNameFor(model => model.Manufacturers[0].Products)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Manufacturer)
+        @foreach (var item in Model.Manufacturers)
         {
             <tr>
-                @{
-                    var productList = (item.Products != null) ? item.Products.Select(p => new SelectListItem
-                    {
-                        Text = p.Name,
-                        Value = p.Id.ToString()
-                    }).ToList()
-                    :
-                    new List<SelectListItem>();
-                }
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -45,7 +43,16 @@
                     @Html.DisplayFor(modelItem => item.Address)
                 </td>
                 <td>
-                    <select class="form-control" asp-items="productList" size="5"></select>
+                    <select class="form-control" size="5">
+                        @if (item.Products != null)
+                        {
+                            foreach (var product in item.Products)
+                            {
+                                <option value="@product.Id" ondblclick="RedirectToProductDetailPage(@product.Id)">@product.Name
+                                </option>
+                            }
+                        }
+                    </select>
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
@@ -56,3 +63,9 @@
         }
     </tbody>
 </table>
+
+<script>
+    function RedirectToProductDetailPage(productId) {
+        window.location.href = "/ProductManager/Details/?id=" + productId;
+    }
+</script>

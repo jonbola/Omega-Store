@@ -32,6 +32,8 @@ public class AccountInfo
     [Display(Name = "Account Id")]
     public required long AccountId { get; set; }
 
+    public Account? Account { get; set; }
+
     [Timestamp]
     public byte[]? AsyncVersion { get; set; }
 

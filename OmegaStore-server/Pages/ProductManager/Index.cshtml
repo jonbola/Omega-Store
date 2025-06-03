@@ -10,35 +10,42 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<br>
+<form style="display: flex; flex-direction: row;">
+    <h4 style="flex: 1;">Search:</h4>
+    <input type="text" asp-for="SearchString" class="form-control" style="flex: 4;">
+    <span style="flex: 5;"></span>
+</form>
+<br>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Name)
+                @Html.DisplayNameFor(model => model.Products[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Price)
+                @Html.DisplayNameFor(model => model.Products[0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Description)
+                @Html.DisplayNameFor(model => model.Products[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Stock)
+                @Html.DisplayNameFor(model => model.Products[0].Stock)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].WarrantyPeriod)
+                @Html.DisplayNameFor(model => model.Products[0].WarrantyPeriod)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Category)
+                @Html.DisplayNameFor(model => model.Products[0].Category)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Manufacturer)
+                @Html.DisplayNameFor(model => model.Products[0].Manufacturer)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Product)
+        @foreach (var item in Model.Products)
         {
             <tr>
                 <td>

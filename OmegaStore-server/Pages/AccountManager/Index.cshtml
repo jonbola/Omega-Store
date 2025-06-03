@@ -10,32 +10,39 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<br>
+<form style="display: flex; flex-direction: row;">
+    <h4 style="flex: 1;">Search:</h4>
+    <input type="text" asp-for="SearchString" class="form-control" style="flex: 4;">
+    <span style="flex: 5;"></span>
+</form>
+<br>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Account[0].AccountName)
+                @Html.DisplayNameFor(model => model.Accounts[0].AccountName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Account[0].Password)
+                @Html.DisplayNameFor(model => model.Accounts[0].Password)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Account[0].Role)
+                @Html.DisplayNameFor(model => model.Accounts[0].Role)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Account[0].Editable)
+                @Html.DisplayNameFor(model => model.Accounts[0].Editable)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Account[0].Deletable)
+                @Html.DisplayNameFor(model => model.Accounts[0].Deletable)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Account[0].CreatedDate)
+                @Html.DisplayNameFor(model => model.Accounts[0].CreatedDate)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Account)
+        @foreach (var item in Model.Accounts)
         {
             <tr>
                 <td>
@@ -68,4 +75,6 @@
     </tbody>
 </table>
 
-@await Html.PartialAsync("~/Assets/Scripts/AccountButtonsScript.cshtml");
+@section Scripts {
+    @await Html.PartialAsync("~/Assets/Scripts/AccountButtonsScript.cshtml")
+}

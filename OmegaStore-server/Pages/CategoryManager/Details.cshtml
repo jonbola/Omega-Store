@@ -24,8 +24,29 @@
             @Html.DisplayFor(model => model.Category.Description)
         </dd>
     </dl>
+    <h4>Product List</h4>
+    <hr />
+    <select class="form-control" multiple="true">
+        @if (Model.Category.Products != null)
+        {
+            foreach (var product in Model.Category.Products)
+            {
+                <option value="@product.Id" ondblclick="RedirectToProductDetailPage(@product.Id)">
+                    @product.Name
+                </option>
+            }
+        }
+    </select>
 </div>
+<br>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Category.Id">Edit</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Category.Id">Delete</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
+
+<script>
+    function RedirectToProductDetailPage(productId) {
+        window.location.href = "/ProductManager/Details/?id=" + productId;
+    }
+</script>

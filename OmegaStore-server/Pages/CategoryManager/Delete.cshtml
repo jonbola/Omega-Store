@@ -33,4 +33,6 @@
     </form>
 </div>
 
-@await Html.PartialAsync("~/Assets/Scripts/DisplayDeletingAlertScript.cshtml");
+@section Scripts {
+    @await Html.PartialAsync("~/Assets/Scripts/DisplayDeletingAlertScript.cshtml")
+}

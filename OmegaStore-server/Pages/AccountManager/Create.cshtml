@@ -13,6 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Account.Purchases" />
             <div class="form-group">
                 <label class="control-label" asp-for="Account.AccountName"></label>
                 <input asp-for="Account.AccountName" class="form-control" />
@@ -37,7 +38,7 @@
                 <div class="form-group form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" asp-for="Account.Editable" /> @Html.DisplayNameFor(model =>
-                        model.Account.Editable)
+                                                model.Account.Editable)
                     </label>
                 </div>
                 <div style="width: 50px;"></div>

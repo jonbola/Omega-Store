@@ -1,4 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OmegaStore_server.Data;
 
 namespace OmegaStore_server.Models;
@@ -22,7 +25,9 @@ public class Account
     [Display(Name = "Created Date")]
     public required DateTime CreatedDate { get; set; }
 
-    public ICollection<Purchase>? Purchases { get; set; }
+    public required ICollection<Purchase> Purchases { get; set; }
+
+    public AccountInfo? AccountInfo { get; set; }
 
     [Timestamp]
     public byte[]? AsyncVersion { get; set; }
@@ -37,7 +42,8 @@ public class Account
                 Role = true,
                 Editable = false,
                 Deletable = false,
-                CreatedDate = DateTime.Parse("2025-02-15T12:00:00")
+                CreatedDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Purchases = new List<Purchase>()
             },
 
             new Account
@@ -47,7 +53,8 @@ public class Account
                 Role = false,
                 Editable = true,
                 Deletable = true,
-                CreatedDate = DateTime.Parse("2025-02-15T12:00:00")
+                CreatedDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Purchases = new List<Purchase>()
             },
 
             new Account
@@ -57,7 +64,8 @@ public class Account
                 Role = false,
                 Editable = true,
                 Deletable = true,
-                CreatedDate = DateTime.Parse("2025-02-15T12:00:00")
+                CreatedDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Purchases = new List<Purchase>()
             }
         );
 

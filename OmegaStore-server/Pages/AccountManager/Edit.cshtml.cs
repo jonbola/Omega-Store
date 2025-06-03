@@ -26,10 +26,6 @@ namespace OmegaStore_server.Pages_AccountManager
         [BindProperty]
         public AccountInfo AccountInfo { get; set; } = default!;
 
-        public List<SelectListItem> SelectGenderList { get; set; } = default!;
-
-        public List<SelectListItem> SelectNationList { get; set; } = default!;
-
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -37,18 +33,19 @@ namespace OmegaStore_server.Pages_AccountManager
                 return NotFound();
             }
 
-            var account = await _context.Account.FirstOrDefaultAsync(m => m.Id == id);
-            var accountInfo = await _context.AccountInfo.FirstOrDefaultAsync(m => m.AccountId == id);
+            var account = await _context.Account.Include(a => a.AccountInfo).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (account == null || accountInfo == null)
+            if (account == null)
             {
                 return NotFound();
             }
 
             Account = account;
-            AccountInfo = accountInfo;
-            SelectGenderList = ValueList.SelectGenderList;
-            SelectNationList = ValueList.SelectNationList;
+
+            if (account.AccountInfo != null)
+            {
+                AccountInfo = account.AccountInfo;
+            }
 
             return Page();
         }

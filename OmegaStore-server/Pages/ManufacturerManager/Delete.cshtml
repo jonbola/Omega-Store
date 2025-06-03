@@ -25,7 +25,7 @@
             @Html.DisplayFor(model => model.Manufacturer.Address)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Manufacturer.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
@@ -33,4 +33,6 @@
     </form>
 </div>
 
-@await Html.PartialAsync("~/Assets/Scripts/DisplayDeletingAlertScript.cshtml");
+@section Scripts {
+    @await Html.PartialAsync("~/Assets/Scripts/DisplayDeletingAlertScript.cshtml")
+}

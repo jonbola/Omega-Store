@@ -28,7 +28,7 @@ namespace OmegaStore_server.Pages_ManufacturerManager
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturer.FirstOrDefaultAsync(m => m.Id == id);
+            var manufacturer = await _context.Manufacturer.Include(m => m.Products).FirstOrDefaultAsync(m => m.Id == id);
 
             if (manufacturer is not null)
             {

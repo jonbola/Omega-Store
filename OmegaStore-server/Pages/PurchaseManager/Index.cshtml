@@ -1,0 +1,45 @@
+@page
+@model OmegaStore_server.Pages_PurchaseManager.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchases[0].Account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchases[0].TotalPurchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchases[0].PurchaseDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Purchases)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.AccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPurchase)
+                </td>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

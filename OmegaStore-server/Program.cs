@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using OmegaStore_server.Data;
 using OmegaStore_server.Models;
@@ -9,14 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<OmegaStoreContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("OmegaStoreContext") ?? throw new InvalidOperationException("Connection string 'OmegaStoreContext' not found.")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("OmegaStoreContext") ??
+    throw new InvalidOperationException("Connection string 'OmegaStoreContext' not found.")));
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    SeedData.Initialize(services);
+    await SeedData.Initialize(services);
 }
 
 app.UseStaticFiles(new StaticFileOptions()
@@ -35,13 +35,9 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+app.MapRazorPages().WithStaticAssets();
 
 app.Run();

@@ -6,7 +6,7 @@ namespace OmegaStore_server.Models;
 
 public static class SeedData
 {
-    public static void Initialize(IServiceProvider serviceProvider)
+    public static async Task Initialize(IServiceProvider serviceProvider)
     {
         using (var context = new OmegaStoreContext(serviceProvider.GetRequiredService<DbContextOptions<OmegaStoreContext>>()))
         {
@@ -24,6 +24,10 @@ public static class SeedData
             Category.CreateSeedData(context);
             Manufacturer.CreateSeedData(context);
             Product.CreateSeedData(context);
+            Purchase.CreateSeedData(context);
+            PurchaseItem.CreateSeedData(context);
+
+            await Purchase.UpdateTotalPurchase(context);
         }
     }
 }

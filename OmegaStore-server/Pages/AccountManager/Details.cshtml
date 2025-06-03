@@ -55,46 +55,46 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountInfo.FirstName)
+            @Html.DisplayNameFor(model => model.Account.AccountInfo.FirstName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountInfo.FirstName)
+            @Html.DisplayFor(model => model.Account.AccountInfo.FirstName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountInfo.LastName)
+            @Html.DisplayNameFor(model => model.Account.AccountInfo.LastName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountInfo.LastName)
+            @Html.DisplayFor(model => model.Account.AccountInfo.LastName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountInfo.Email)
+            @Html.DisplayNameFor(model => model.Account.AccountInfo.Email)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountInfo.Email)
+            @Html.DisplayFor(model => model.Account.AccountInfo.Email)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountInfo.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Account.AccountInfo.PhoneNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountInfo.PhoneNumber)
+            @Html.DisplayFor(model => model.Account.AccountInfo.PhoneNumber)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountInfo.Gender)
+            @Html.DisplayNameFor(model => model.Account.AccountInfo.Gender)
         </dt>
         <dd class="col-sm-10">
-            @GetTextList.GetGenderText(Model.AccountInfo.Gender??"")
+            @GetTextList.GetGenderText(Model.Account.AccountInfo.Gender)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountInfo.Nation)
+            @Html.DisplayNameFor(model => model.Account.AccountInfo.Nation)
         </dt>
         <dd class="col-sm-10">
-            @GetTextList.GetNationText(Model.AccountInfo.Nation??"")
+            @GetTextList.GetNationText(Model.Account.AccountInfo.Nation)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountInfo.BirthDate)
+            @Html.DisplayNameFor(model => model.Account.AccountInfo.BirthDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccountInfo.BirthDate)
+            @Html.DisplayFor(model => model.Account.AccountInfo.BirthDate)
         </dd>
     </dl>
 </div>

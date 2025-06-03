@@ -35,6 +35,10 @@ namespace OmegaStore_server.Pages_AccountManager
         {
             if (!ModelState.IsValid)
             {
+                foreach (var error in ModelState.Values.SelectMany(ms => ms.Errors))
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
                 return Page();
             }
 
@@ -45,6 +49,8 @@ namespace OmegaStore_server.Pages_AccountManager
                 ModelState.AddModelError("Account.AccountName", "Account already exists.");
                 return Page();
             }
+
+            Account.Purchases = Account.Purchases ?? new List<Purchase>();
 
             _context.Account.Add(Account);
             await _context.SaveChangesAsync();

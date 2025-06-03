@@ -21,8 +21,6 @@ namespace OmegaStore_server.Pages_AccountManager
 
         public Account Account { get; set; } = default!;
 
-        public AccountInfo AccountInfo { get; set; } = default!;
-
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -30,13 +28,11 @@ namespace OmegaStore_server.Pages_AccountManager
                 return NotFound();
             }
 
-            var account = await _context.Account.FirstOrDefaultAsync(m => m.Id == id);
-            var accountInfo = await _context.AccountInfo.FirstOrDefaultAsync(m => m.AccountId == id);
+            var account = await _context.Account.Include(a => a.AccountInfo).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (account is not null && accountInfo is not null)
+            if (account is not null)
             {
                 Account = account;
-                AccountInfo = accountInfo;
 
                 return Page();
             }

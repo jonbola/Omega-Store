@@ -94,6 +94,9 @@ namespace OmegaStore_server.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AccountId")
+                        .IsUnique();
+
                     b.ToTable("AccountInfo");
                 });
 
@@ -201,9 +204,6 @@ namespace OmegaStore_server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
-
                     b.Property<long>("ProductId")
                         .HasColumnType("INTEGER");
 
@@ -220,6 +220,17 @@ namespace OmegaStore_server.Migrations
                     b.HasIndex("PurchaseId");
 
                     b.ToTable("PurchaseItem");
+                });
+
+            modelBuilder.Entity("OmegaStore_server.Models.AccountInfo", b =>
+                {
+                    b.HasOne("OmegaStore_server.Models.Account", "Account")
+                        .WithOne("AccountInfo")
+                        .HasForeignKey("OmegaStore_server.Models.AccountInfo", "AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("OmegaStore_server.Models.Product", b =>
@@ -243,32 +254,38 @@ namespace OmegaStore_server.Migrations
 
             modelBuilder.Entity("OmegaStore_server.Models.Purchase", b =>
                 {
-                    b.HasOne("OmegaStore_server.Models.Account", null)
+                    b.HasOne("OmegaStore_server.Models.Account", "Account")
                         .WithMany("Purchases")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("OmegaStore_server.Models.PurchaseItem", b =>
                 {
                     b.HasOne("OmegaStore_server.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("PurchaseItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OmegaStore_server.Models.Purchase", null)
+                    b.HasOne("OmegaStore_server.Models.Purchase", "Purchase")
                         .WithMany("Items")
                         .HasForeignKey("PurchaseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
+
+                    b.Navigation("Purchase");
                 });
 
             modelBuilder.Entity("OmegaStore_server.Models.Account", b =>
                 {
+                    b.Navigation("AccountInfo");
+
                     b.Navigation("Purchases");
                 });
 
@@ -280,6 +297,11 @@ namespace OmegaStore_server.Migrations
             modelBuilder.Entity("OmegaStore_server.Models.Manufacturer", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("OmegaStore_server.Models.Product", b =>
+                {
+                    b.Navigation("PurchaseItems");
                 });
 
             modelBuilder.Entity("OmegaStore_server.Models.Purchase", b =>

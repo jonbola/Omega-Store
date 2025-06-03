@@ -20,7 +20,7 @@ public class Category
             new Category
             {
                 Name = "CPU",
-                Description = "CPU (Central Processing Unit) is the primary component of a computer that acts as its “control center."
+                Description = "CPU (Central Processing Unit) is the primary component of a computer that acts as its control center."
             },
             new Category
             {
