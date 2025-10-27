@@ -83,6 +83,11 @@ public class Manufacturer
             {
                 Name = "Kingston Technology Corp",
                 Address = "Fountain Valley, California, United States"
+            },
+            new Manufacturer
+            {
+                Name = "Corsair Gaming Inc",
+                Address="Milpitas, California, United States"
             }
         );
 

@@ -51,7 +51,6 @@ public class AccountInfo
                 BirthDate = DateTime.Parse("2001-01-30"),
                 AccountId = 1
             },
-
             new AccountInfo
             {
                 FirstName = "Phuc",
@@ -63,7 +62,6 @@ public class AccountInfo
                 BirthDate = DateTime.Parse("2003-05-10"),
                 AccountId = 2
             },
-
             new AccountInfo
             {
                 FirstName = "Jon",

@@ -21,6 +21,8 @@ namespace OmegaStore_server.Pages_CategoryManager
 
         public Category Category { get; set; } = default!;
 
+        public IList<Product> Products { get; set; } = default!;
+
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -28,11 +30,14 @@ namespace OmegaStore_server.Pages_CategoryManager
                 return NotFound();
             }
 
-            var category = await _context.Category.Include(pc => pc.Products).FirstOrDefaultAsync(m => m.Id == id);
+            var category = await _context.Category
+            .Include(pc => pc.Products)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (category is not null)
+            if (category is not null && category.Products is not null)
             {
                 Category = category;
+                Products = category.Products.ToList();
 
                 return Page();
             }

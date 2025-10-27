@@ -20,6 +20,7 @@ namespace OmegaStore_server.Pages_PurchaseManager
         }
 
         public Purchase Purchase { get; set; } = default!;
+        public IList<PurchaseItem> Items = default!;
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -28,11 +29,17 @@ namespace OmegaStore_server.Pages_PurchaseManager
                 return NotFound();
             }
 
-            var purchase = await _context.Purchase.Include(pc => pc.Account).FirstOrDefaultAsync(m => m.Id == id);
+            var purchase = await _context.Purchase
+            .Include(pc => pc.Account)
+            .Include(pc => pc.Items)
+            .ThenInclude(pi => pi.Product)
+            .ThenInclude(p => p!.Category)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (purchase is not null)
+            if (purchase is not null && purchase.Items is not null)
             {
                 Purchase = purchase;
+                Items = purchase.Items.ToList();
 
                 return Page();
             }

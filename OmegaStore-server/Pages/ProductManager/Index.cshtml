@@ -21,19 +21,22 @@
     <thead>
         <tr>
             <th>
+                No.
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Products[0].Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Products[0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Products[0].Description)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Products[0].Stock)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Products[0].WarrantyPeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Products[0].Sale)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Products[0].Category)
@@ -45,37 +48,42 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Products)
+        @foreach (var item in Model.Products.Select((Product, Index) => new { Product, Index }))
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @(item.Index + 1)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)$
+                    @Html.DisplayFor(modelItem => item.Product.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.Product.Price)$
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Stock)
+                    @Html.DisplayFor(modelItem => item.Product.Stock)
                 </td>
                 <td>
-                    @(item.WarrantyPeriod == null ? "" : item.WarrantyPeriod + " " + (item.WarrantyPeriod <= 1 ? "month"
+                    @(item.Product.WarrantyPeriod == null ? "" : item.Product.WarrantyPeriod + " " +
+                                    (item.Product.WarrantyPeriod <= 1 ? "month"
                                     : "months"))
-            </td>
-            <td>
-                @item.Category?.Name
-            </td>
-            <td>
-                @item.Manufacturer?.Name
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-                }
+                </td>
+                <td>
+                    @(item.Product.Sale + " " + (item.Product.Sale <= 1 ? "unit" : "units"))
+                </td>
+                <td>
+                    <a href="/CategoryManager/Details/?id=@item.Product.CategoryId">@item.Product.Category!.Name</a>
+                </td>
+                <td>
+                    <a
+                        href="/ManufacturerManager/Details/?id=@item.Product.ManufacturerId">@item.Product.Manufacturer!.Name</a>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Product.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Product.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Product.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

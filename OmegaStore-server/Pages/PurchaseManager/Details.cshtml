@@ -15,13 +15,19 @@
             @Html.DisplayNameFor(model => model.Purchase.Account)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Purchase.Account.AccountName)
+            <a href="/AccountManager/Details/?id=@Model.Purchase?.AccountId">@Model.Purchase?.Account?.AccountName</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Purchase.TotalPurchase)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Purchase.TotalPurchase)
+            @Html.DisplayFor(model => model.Purchase.TotalPurchase)$
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Purchase.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Purchase!.Status ? "Completed" : "Pending")
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Purchase.PurchaseDate)
@@ -30,8 +36,59 @@
             @Html.DisplayFor(model => model.Purchase.PurchaseDate)
         </dd>
     </dl>
+    <h4>Item List</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Items[0].Product)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Items[0].Product!.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Items[0].Product!.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Items[0].Quantity)
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items.Select((Product, Index) => new { Product, Index }))
+            {
+                <tr>
+                    <td>
+                        @(item.Index + 1)
+                    </td>
+                    <td>
+                        <a href="/ProductManager/Details/?id=@item.Product!.ProductId">@item.Product!.Product!.Name</a>
+                    </td>
+                    <td>
+                        <a
+                            href="/CategoryManager/Details/?id=@item.Product?.Product?.Category?.Id">@item.Product?.Product?.Category?.Name</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product!.Product!.Price)$
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product!.Quantity)
+                    </td>
+                    <td>
+                        @(item.Product?.Quantity * item.Product?.Product!.Price)$
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Purchase.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

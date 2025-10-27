@@ -30,7 +30,6 @@ namespace OmegaStore_server.Pages_ProductManager
 
             var product = await _context.Product.Include(p => p.Category).Include(p => p.Manufacturer).FirstOrDefaultAsync(p => p.Id == id);
 
-
             if (product is not null)
             {
                 Product = product;

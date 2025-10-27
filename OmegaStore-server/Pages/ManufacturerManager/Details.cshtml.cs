@@ -21,6 +21,8 @@ namespace OmegaStore_server.Pages_ManufacturerManager
 
         public Manufacturer Manufacturer { get; set; } = default!;
 
+        public IList<Product> Products { get; set; } = default!;
+
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -28,11 +30,14 @@ namespace OmegaStore_server.Pages_ManufacturerManager
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturer.Include(m => m.Products).FirstOrDefaultAsync(m => m.Id == id);
+            var manufacturer = await _context.Manufacturer
+            .Include(m => m.Products)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (manufacturer is not null)
+            if (manufacturer is not null && manufacturer.Products is not null)
             {
                 Manufacturer = manufacturer;
+                Products = manufacturer.Products.ToList();
 
                 return Page();
             }

@@ -56,52 +56,59 @@ namespace OmegaStore_server.Pages_AccountManager
             }
         }
 
-        public async Task<JsonResult> OnGetRecords()
+        public async Task<JsonResult> OnGetPullRecords()
         {
             var accountList = await _context.Account
-            .Include(a => a.Purchases)
+            .Include(a => a.Purchases!)
             .ThenInclude(pc => pc.Items)
             .ThenInclude(pi => pi.Product)
             .Include(a => a.AccountInfo)
             .Select(a => new
             {
-                a.AccountName,
-                a.Password,
-                a.Role,
-                a.Editable,
-                a.Deletable,
-                a.CreatedDate,
-                AccountInfo = a.AccountInfo != null ? new
+                _id = a.Id,
+                _accountName = a.AccountName,
+                _password = a.Password,
+                _role = a.Role,
+                _editable = a.Editable,
+                _deletable = a.Deletable,
+                _createDate = a.CreatedDate,
+                _accountInfo = a.AccountInfo != null ? new
                 {
-                    a.AccountInfo.Id,
-                    a.AccountInfo.FirstName,
-                    a.AccountInfo.LastName,
-                    a.AccountInfo.AvatarImage,
-                    a.AccountInfo.Email,
-                    a.AccountInfo.PhoneNumber,
-                    a.AccountInfo.Gender,
-                    a.AccountInfo.Nation,
-                    a.AccountInfo.BirthDate,
-                    a.AccountInfo.AccountId
+                    _id = a.AccountInfo.Id,
+                    _firstName = a.AccountInfo.FirstName,
+                    _lastName = a.AccountInfo.LastName,
+                    _avatarImage = a.AccountInfo.AvatarImage,
+                    _email = a.AccountInfo.Email,
+                    _phoneNumber = a.AccountInfo.PhoneNumber,
+                    _gender = a.AccountInfo.Gender,
+                    _nation = a.AccountInfo.Nation,
+                    _birthDate = a.AccountInfo.BirthDate,
+                    _accountId = a.AccountInfo.AccountId
                 } : null,
-                Purchases = a.Purchases != null ? a.Purchases.Select(pc => new
+                _purchases = a.Purchases != null ? a.Purchases.Select(pc => new
                 {
-                    pc.Id,
-                    pc.TotalPurchase,
-                    pc.PurchaseDate,
-                    pc.AccountId,
-                    Items = pc.Items.Select(pi => new
+                    _id = pc.Id,
+                    _totalPurchase = pc.TotalPurchase,
+                    _purchaseDate = pc.PurchaseDate,
+                    _accountId = pc.AccountId,
+                    _items = pc.Items.Select(pi => new
                     {
-                        pi.Id,
-                        pi.PurchaseId,
-                        pi.Quantity,
-                        Product = pi.Product != null ? new
+                        _id = pi.Id,
+                        _quantity = pi.Quantity,
+                        _purchaseId = pi.PurchaseId,
+                        _product = pi.Product != null ? new
                         {
-                            pi.Product.Id,
-                            pi.Product.Name,
-                            pi.Product.Price,
-                            pi.Product.Stock,
-                            pi.Product.WarrantyPeriod
+                            _id = pi.Product.Id,
+                            _name = pi.Product.Name,
+                            _price = pi.Product.Price,
+                            _image = pi.Product.Image,
+                            _description = pi.Product.Description,
+                            _stock = pi.Product.Stock,
+                            _warrantyPeriod = pi.Product.WarrantyPeriod,
+                            _createdDate = pi.Product.CreatedDate,
+                            _sale = pi.Product.Sale,
+                            _categoryId = pi.Product.CategoryId,
+                            _manufacturerId = pi.Product.ManufacturerId
                         } : null
                     }).ToList()
                 }).ToList() : null

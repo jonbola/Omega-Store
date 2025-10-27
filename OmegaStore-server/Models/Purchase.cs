@@ -12,11 +12,13 @@ public class Purchase
     public long Id { get; set; }
 
     [Display(Name = "Total Purchase")]
-    public required decimal TotalPurchase { get; set; } //Change data type from decimal to float then create migrations and apply
+    public required float TotalPurchase { get; set; }
 
     [DataType(DataType.DateTime)]
     [Display(Name = "Purchase Date")]
     public required DateTime PurchaseDate { get; set; }
+
+    public required bool Status { get; set; }
 
     public required long AccountId { get; set; }
 
@@ -33,38 +35,39 @@ public class Purchase
                 Items = new List<PurchaseItem> { },
                 TotalPurchase = 0,
                 PurchaseDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Status = true,
                 AccountId = 2
             },
-
             new Purchase
             {
                 Items = new List<PurchaseItem> { },
                 TotalPurchase = 0,
                 PurchaseDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Status = true,
                 AccountId = 2
             },
-
             new Purchase
             {
                 Items = new List<PurchaseItem> { },
                 TotalPurchase = 0,
                 PurchaseDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Status = true,
                 AccountId = 2
             },
-
             new Purchase
             {
                 Items = new List<PurchaseItem> { },
                 TotalPurchase = 0,
                 PurchaseDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Status = true,
                 AccountId = 3
             },
-
             new Purchase
             {
                 Items = new List<PurchaseItem> { },
                 TotalPurchase = 0,
                 PurchaseDate = DateTime.Parse("2025-02-15T12:00:00"),
+                Status = true,
                 AccountId = 3
             }
         );
@@ -72,7 +75,7 @@ public class Purchase
         context.SaveChanges();
     }
 
-    public static async Task UpdateTotalPurchase(OmegaStoreContext context)
+    public static async Task UpdateExistedRecords(OmegaStoreContext context)
     {
         var purchaseList = await context.Purchase.Include(pc => pc.Items).ThenInclude(pi => pi.Product).ToListAsync();
 
@@ -88,7 +91,7 @@ public class Purchase
                 }
             }
 
-            purchase.TotalPurchase = Convert.ToDecimal(totalPurchase);
+            purchase.TotalPurchase = totalPurchase;
 
             context.Update(purchase);
         }

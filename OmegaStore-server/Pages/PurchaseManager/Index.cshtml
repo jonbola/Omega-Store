@@ -11,10 +11,16 @@
     <thead>
         <tr>
             <th>
+                No.
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Purchases[0].Account)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Purchases[0].TotalPurchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchases[0].Status)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Purchases[0].PurchaseDate)
@@ -23,21 +29,26 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Purchases)
+        @foreach (var item in Model.Purchases.Select((Purchase, Index) => new { Purchase, Index }))
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Account.AccountName)
+                    @(item.Index + 1)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TotalPurchase)
+                    @Html.DisplayFor(modelItem => item.Purchase.Account!.AccountName)
                 </td>
                 <td>
-
-                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                    @Html.DisplayFor(modelItem => item.Purchase.TotalPurchase)$
                 </td>
                 <td>
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    @(item.Purchase.Status ? "Completed" : "Pending")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Purchase.PurchaseDate)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Purchase.Id">Details</a>
                 </td>
             </tr>
         }

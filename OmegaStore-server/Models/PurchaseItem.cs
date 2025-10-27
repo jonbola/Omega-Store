@@ -13,9 +13,9 @@ public class PurchaseItem
 
     public Purchase? Purchase { get; set; }
 
-    [Display(Name = "Product Name")]
     public required long ProductId { get; set; }
 
+    [Display(Name = "Product")]
     public Product? Product { get; set; }
 
     public static void CreateSeedData(OmegaStoreContext context)
@@ -27,21 +27,18 @@ public class PurchaseItem
                 Quantity = 10,
                 PurchaseId = 1
             },
-
             new PurchaseItem
             {
                 ProductId = 3,
                 Quantity = 5,
                 PurchaseId = 1
             },
-
             new PurchaseItem
             {
                 ProductId = 2,
                 Quantity = 20,
                 PurchaseId = 2
             },
-
             new PurchaseItem
             {
                 ProductId = 2,
@@ -55,7 +52,6 @@ public class PurchaseItem
                 Quantity = 100,
                 PurchaseId = 4
             },
-
             new PurchaseItem
             {
                 ProductId = 1,
@@ -69,7 +65,6 @@ public class PurchaseItem
                 Quantity = 19,
                 PurchaseId = 5
             },
-
             new PurchaseItem
             {
                 ProductId = 3,

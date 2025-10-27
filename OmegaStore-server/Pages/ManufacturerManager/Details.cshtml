@@ -26,26 +26,34 @@
     </dl>
     <h4>Product List</h4>
     <hr />
-    <select class="form-control" multiple="true">
-        @if (Model.Manufacturer.Products != null)
-        {
-            foreach (var product in Model.Manufacturer.Products)
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Name)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products.Select((Product, Index) => new { Product, Index }))
             {
-                <option value="@product.Id" ondblclick="RedirectToProductDetailPage(@product.Id)">
-                    @product.Name
-                </option>
+                <tr>
+                    <td>
+                        @(item.Index + 1)
+                    </td>
+                    <td>
+                        <a href="/ProductManager/Details/?id=@item.Product.Id">@item.Product.Name</a>
+                    </td>
+                </tr>
             }
-        }
-    </select>
+        </tbody>
+    </table>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Manufacturer.Id">Edit</a> |
     <a asp-page="./Delete" asp-route-id="@Model.Manufacturer.Id">Delete</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
-
-<script>
-    function RedirectToProductDetailPage(productId) {
-        window.location.href = "/ProductManager/Details/?id=" + productId;
-    }
-</script>

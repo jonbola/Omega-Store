@@ -43,6 +43,8 @@ namespace OmegaStore_server.Pages_ProductManager
                 return Page();
             }
 
+            Product.CreatedDate = DateTime.UtcNow;
+
             await SetImageData(Image);
 
             _context.Product.Add(Product);

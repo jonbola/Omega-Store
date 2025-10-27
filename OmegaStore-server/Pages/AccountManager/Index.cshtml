@@ -21,6 +21,9 @@
     <thead>
         <tr>
             <th>
+                No.
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Accounts[0].AccountName)
             </th>
             <th>
@@ -42,32 +45,35 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Accounts)
+        @foreach (var item in Model.Accounts.Select((Account, Index) => new { Account, Index }))
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AccountName)
+                    @(item.Index + 1)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Password)
+                    @Html.DisplayFor(modelItem => item.Account.AccountName)
                 </td>
                 <td>
-                    @(item.Role ? "Admin" : "Customer")
+                    @Html.DisplayFor(modelItem => item.Account.Password)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Editable)
+                    @(item.Account.Role ? "Admin" : "Customer")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Deletable)
+                    @Html.DisplayFor(modelItem => item.Account.Editable)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                    @Html.DisplayFor(modelItem => item.Account.Deletable)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id" data-editable="@item.Editable"
+                    @Html.DisplayFor(modelItem => item.Account.CreatedDate)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Account.Id" data-editable="@item.Account.Editable"
                         class="account-edit-btn">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id" data-deletable="@item.Deletable"
+                    <a asp-page="./Details" asp-route-id="@item.Account.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Account.Id" data-deletable="@item.Account.Deletable"
                         class="account-delete-btn">Delete</a>
                 </td>
             </tr>

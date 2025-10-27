@@ -1,65 +1,41 @@
-import CustomerFrame from "./front-end/customer/customer_frame";
-import { NavigationIndependentTree } from "@react-navigation/native";
-import LoginPage from "./front-end/customer/login_page";
-import SignupPage from "./front-end/customer/signup_page";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AdminFrame from "./front-end/admin/admin_frame";
-import AccountDetailManagerPage from "./front-end/admin/account_detail_manager_page";
-import CategoryDetailManagerPage from "./front-end/admin/category_detail_manager_page";
-import CreateAccountPage from "./front-end/admin/create_account_page";
-import ProductDetailManagerPage from "./front-end/admin/product_detail_manager_page";
-import ProductDetailPage from "./front-end/customer/product_detail_page";
-import Product from "./back-end/models/product";
+import Account from "@/data/models/account";
+import { UserProvider } from "@/data/providers/user";
+import { NavigationIndependentTree, NavigatorScreenParams } from "@react-navigation/native";
+import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
+import LoginPage from "./pages/login";
+import { PaperProvider } from "react-native-paper";
+import { MaterialCommunityIcons } from "@expo/vector-icons"
+import SignUpPage from "./pages/signup";
+import { DrawerParams, UserLayout } from "./pages/user-layout";
+import { SearchPage } from "./pages/search";
+import { ProductDetailPage } from "./pages/product_detail";
+import Product from "@/data/models/product";
 
-export type RootParamsList = {
-  CustomerFrame: { isLogged: boolean };
-  AdminFrame: undefined;
-  LoginPage: undefined;
-  SignupPage: undefined;
-  ProductDetailPage: { isLogged: boolean, product: Product };
-  CreateAccountPage: undefined;
-  AccountDetailManagerPage: undefined;
-  ProductDetailManagerPage: undefined;
-  CategoryDetailManagerPage: undefined;
-}
+export type RootParams = {
+  UserLayout: NavigatorScreenParams<DrawerParams> & { account: Account | null; };
+  LogInPage: undefined;
+  SignUpPage: undefined;
+  SearchPage: { searchText: string };
+  ProductDetailPage: { product: Product };
+};
+export type RootNavigationProps = NativeStackNavigationProp<RootParams>;
 
 export default function RootLayout() {
-  const Section = createNativeStackNavigator<RootParamsList>();
+  const Stack = createNativeStackNavigator<RootParams>();
 
   return (
-    <NavigationIndependentTree>
-      <Section.Navigator
-        initialRouteName="CustomerFrame"
-        screenOptions={{ headerShown: false }}>
-        <Section.Screen
-          name="CustomerFrame"
-          component={CustomerFrame}
-          initialParams={{ isLogged: false }} />
-        <Section.Screen
-          name="AdminFrame"
-          component={AdminFrame} />
-        <Section.Screen
-          name="LoginPage"
-          component={LoginPage} />
-        <Section.Screen
-          name="SignupPage"
-          component={SignupPage} />
-        <Section.Screen
-          name="ProductDetailPage"
-          component={ProductDetailPage} />
-        <Section.Screen
-          name="CreateAccountPage"
-          component={CreateAccountPage} />
-        <Section.Screen
-          name="AccountDetailManagerPage"
-          component={AccountDetailManagerPage} />
-        <Section.Screen
-          name="ProductDetailManagerPage"
-          component={ProductDetailManagerPage} />
-        <Section.Screen
-          name="CategoryDetailManagerPage"
-          component={CategoryDetailManagerPage} />
-      </Section.Navigator>
-    </NavigationIndependentTree>
+    <UserProvider>
+      <PaperProvider settings={{ icon: (props) => <MaterialCommunityIcons {...props} /> }}>
+        <NavigationIndependentTree>
+          <Stack.Navigator initialRouteName="UserLayout" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="UserLayout" component={UserLayout} initialParams={{ account: null }} />
+            <Stack.Screen name="LogInPage" component={LoginPage} />
+            <Stack.Screen name="SignUpPage" component={SignUpPage} />
+            <Stack.Screen name="SearchPage" component={SearchPage} initialParams={{ searchText: "" }} />
+            <Stack.Screen name="ProductDetailPage" component={ProductDetailPage} />
+          </Stack.Navigator>
+        </NavigationIndependentTree>
+      </PaperProvider>
+    </UserProvider>
   );
-}
+};

@@ -35,13 +35,10 @@ namespace OmegaStore_server.Pages_AccountManager
         {
             if (!ModelState.IsValid)
             {
-                foreach (var error in ModelState.Values.SelectMany(ms => ms.Errors))
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
                 return Page();
             }
 
+            Account.CreatedDate = DateTime.UtcNow;
             var existingAccount = await _context.Account.FirstOrDefaultAsync(a => a.AccountName == Account.AccountName);
 
             if (existingAccount != null)
@@ -50,7 +47,7 @@ namespace OmegaStore_server.Pages_AccountManager
                 return Page();
             }
 
-            Account.Purchases = Account.Purchases ?? new List<Purchase>();
+            Account.Purchases = new List<Purchase>();
 
             _context.Account.Add(Account);
             await _context.SaveChangesAsync();

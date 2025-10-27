@@ -69,6 +69,7 @@ namespace OmegaStore_server.Pages_ProductManager
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Error update image data: {ex.Message}");
+                
                 return Page();
             }
 

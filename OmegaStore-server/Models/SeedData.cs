@@ -27,7 +27,8 @@ public static class SeedData
             Purchase.CreateSeedData(context);
             PurchaseItem.CreateSeedData(context);
 
-            await Purchase.UpdateTotalPurchase(context);
+            await Product.UpdateExistedRecords(context);
+            await Purchase.UpdateExistedRecords(context);
         }
     }
 }

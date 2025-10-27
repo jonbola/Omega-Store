@@ -145,6 +145,9 @@ namespace OmegaStore_server.Migrations
                     b.Property<long>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
@@ -160,6 +163,9 @@ namespace OmegaStore_server.Migrations
 
                     b.Property<float>("Price")
                         .HasColumnType("REAL");
+
+                    b.Property<int>("Sale")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("Stock")
                         .HasColumnType("INTEGER");
@@ -188,8 +194,11 @@ namespace OmegaStore_server.Migrations
                     b.Property<DateTime>("PurchaseDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("TotalPurchase")
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("TotalPurchase")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 

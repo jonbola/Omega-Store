@@ -53,6 +53,12 @@
             </div>
             <br>
             <div class="form-group">
+                <label asp-for="Product.Sale" class="control-label"></label>
+                <p class="form-control">@(Model.Product.Sale + " " + (Model.Product.Sale <= 1 ? "unit" : "units"))</p>
+                <span asp-validation-for="Product.Sale" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
                 <label asp-for="Product.Category" class="control-label"></label>
                 <select asp-for="Product.CategoryId" class="form-control select2"
                     asp-items="@Model.CategoryList"></select>

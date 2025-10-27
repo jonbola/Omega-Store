@@ -21,6 +21,9 @@
     <thead>
         <tr>
             <th>
+                No.
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Manufacturers[0].Name)
             </th>
             <th>
@@ -33,31 +36,35 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Manufacturers)
+        @foreach (var item in Model.Manufacturers.Select((Manufacturer, Index) => new { Manufacturer, Index }))
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @(item.Index + 1)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Address)
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Address)
                 </td>
                 <td>
                     <select class="form-control" size="5">
-                        @if (item.Products != null)
+                        @if (item.Manufacturer.Products != null)
                         {
-                            foreach (var product in item.Products)
+                            foreach (var product in item.Manufacturer.Products)
                             {
-                                <option value="@product.Id" ondblclick="RedirectToProductDetailPage(@product.Id)">@product.Name
+                                <option value="@product.Id" ondblclick="RedirectToProductDetailPage(@product.Id)">
+                                    @product.Name
                                 </option>
                             }
                         }
                     </select>
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Manufacturer.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Manufacturer.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Manufacturer.Id">Delete</a>
                 </td>
             </tr>
         }
